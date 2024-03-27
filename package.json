@@ -18,7 +18,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-package": "babel ./src/index.tsx --out-dir dist --extensions \".js,.jsx,.ts,.tsx\" && webpack --config webpack.config.js"
+    "build-package": "webpack --config webpack.config.js"
   },
   "peerDependencies": {
     "react": "^18",
@@ -60,9 +60,11 @@
     "node-sass": "^9.0.0",
     "npm": "^10.5.0",
     "postcss": "^8",
+    "postcss-scss": "^4.0.9",
     "sass-loader": "^14.1.1",
     "style-loader": "^3.3.4",
     "tailwindcss": "^3.3.0",
+    "ts-loader": "^9.5.1",
     "typescript": "^5",
     "webpack-cli": "^5.1.4"
   }
