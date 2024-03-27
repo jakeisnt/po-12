@@ -13,6 +13,12 @@ const withPWA = require("@ducanh2912/next-pwa").default({
 });
 
 const nextConfig = {
+  // we use babel for packaging
+  // but force swc for nextjs app development.
+  experimental: {
+    forceSwcTransforms: true,
+  },
+
   webpack(config) {
     // Handle SVG files
     config.module.rules.push({
