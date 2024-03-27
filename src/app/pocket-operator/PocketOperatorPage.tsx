@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "../lib/utils";
 import PocketOperator from "./PocketOperator";
 import classes from "./pocketOperatorPage.module.scss";
 import { useState, useEffect, useCallback, useMemo } from "react";
@@ -150,11 +151,11 @@ const PocketOperatorWrapper = () => {
       </div>
 
       <div
-        className={
+        className={cn(
           onTouchDevice
             ? "absolute w-auto flex justify-center align-top"
             : "absolute left-10 top-10 w-10/100"
-        }
+        )}
         style={{
           transition: "top 0.2s ease",
           transitionDelay: "0.25s",
