@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback } from "react";
 
-import useLocalStorage from "@/app/lib/useLocalStorage";
+import useLocalStorage from "../../lib/useLocalStorage";
 
 type Note = { note: number };
 type Pattern = { notes: Note[][] };

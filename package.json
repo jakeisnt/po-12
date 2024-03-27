@@ -31,12 +31,12 @@
     "clsx": "^2.1.0",
     "lucide-react": "^0.363.0",
     "next": "14.1.4",
-    "react": "^18",
-    "react-dom": "^18",
     "sass": "^1.72.0",
     "tailwind-merge": "^2.2.2",
     "tone": "^14.7.77",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
