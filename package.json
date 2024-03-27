@@ -18,7 +18,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-package": "babel src/index.tsx --out-dir dist --extensions \".js,.jsx,.ts,.tsx\" && webpack --config webpack.config.js"
+    "build-package": "babel ./src/index.tsx --out-dir dist --extensions \".js,.jsx,.ts,.tsx\" && webpack --config webpack.config.js"
   },
   "peerDependencies": {
     "react": "^18",
