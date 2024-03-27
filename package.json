@@ -1,12 +1,28 @@
 {
   "name": "po-12",
   "version": "0.1.0",
+  "description": "A simple drum machine",
+  "main": "dist/index.js",
+  "files": ["dist"],
+  "license": "MIT",
+  "author": "jakeisnt",
+  "exports": { 
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-package": "tsc" 
+  },
+  "peerDependencies": {
+    "react": "^18",
+    "react-dom": "^18"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
