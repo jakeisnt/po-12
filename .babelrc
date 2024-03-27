@@ -5,11 +5,17 @@
     "@babel/preset-typescript"
   ],
   "plugins": [
-    ["transform-react-jsx", {
-      "pragma": "React.createElement",
-      "pragmaFrag": "React.Fragment",
-      "throwIfNamespace": false,
-      "runtime": "automatic"
+    ["@babel/plugin-transform-react-jsx", {
+      "runtime": "automatic",
+      "importSource": "react"
+    }],
+    ["module-resolver", {
+      "root": ["./src"],
+      "extensions": [".js", ".jsx", ".ts", ".tsx", ".scss"]
+    }],
+    ["react-css-modules", {
+      "generateScopedName": "[name]__[local]___[hash:base64:5]",
+      "webpackHotModuleReloading": true
     }]
   ]
 }

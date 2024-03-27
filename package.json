@@ -18,7 +18,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-package": "babel src --out-dir dist --extensions \".js,.jsx,.ts,.tsx\""
+    "build-package": "babel src/index.tsx --out-dir dist --extensions \".js,.jsx,.ts,.tsx\" && webpack --config webpack.config.js"
   },
   "peerDependencies": {
     "react": "^18",
@@ -28,6 +28,7 @@
     "@babel/preset-env": "^7.24.3",
     "@babel/preset-typescript": "^7.24.1",
     "@svgr/webpack": "^8.1.0",
+    "babel-plugin-react-css-modules": "^5.2.6",
     "clsx": "^2.1.0",
     "lucide-react": "^0.363.0",
     "next": "14.1.4",
@@ -43,17 +44,26 @@
   "devDependencies": {
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.3",
+    "@babel/plugin-transform-react-jsx": "^7.23.4",
     "@babel/preset-react": "^7.24.1",
     "@ducanh2912/next-pwa": "^10.2.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "babel-plugin-module-resolver": "^5.0.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "css-loader": "^6.10.0",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
+    "install": "^0.13.0",
+    "node-sass": "^9.0.0",
+    "npm": "^10.5.0",
     "postcss": "^8",
+    "sass-loader": "^14.1.1",
+    "style-loader": "^3.3.4",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "webpack-cli": "^5.1.4"
   }
 }
