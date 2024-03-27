@@ -3,5 +3,13 @@
     "@babel/preset-env",
     "@babel/preset-react",
     "@babel/preset-typescript"
+  ],
+  "plugins": [
+    ["transform-react-jsx", {
+      "pragma": "React.createElement",
+      "pragmaFrag": "React.Fragment",
+      "throwIfNamespace": false,
+      "runtime": "automatic"
+    }]
   ]
 }

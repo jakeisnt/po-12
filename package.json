@@ -18,7 +18,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-package": "tsc && babel src --out-dir dist --extensions \".ts,.tsx\" --copy-files"
+    "build-package": "babel src --out-dir dist --extensions \".js,.jsx,.ts,.tsx\""
   },
   "peerDependencies": {
     "react": "^18",
@@ -49,6 +49,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "postcss": "^8",
