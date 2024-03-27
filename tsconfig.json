@@ -28,11 +28,12 @@
   },
   "include": [
     "next-env.d.ts",
+    "src",
     "**/*.ts",
     "**/*.tsx",
     "**/*.jsx",
     ".next/types/**/*.ts",
     "jest.config.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

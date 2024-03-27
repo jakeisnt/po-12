@@ -6,7 +6,7 @@
   "files": ["dist"],
   "license": "MIT",
   "author": "jakeisnt",
-  "exports": { 
+  "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
@@ -18,13 +18,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-package": "tsc" 
+    "build-package": "tsc && babel src --out-dir dist --extensions \".ts,.tsx\" --copy-files"
   },
   "peerDependencies": {
     "react": "^18",
     "react-dom": "^18"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-typescript": "^7.24.1",
     "@svgr/webpack": "^8.1.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.363.0",
@@ -37,6 +39,9 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.3",
+    "@babel/preset-react": "^7.24.1",
     "@ducanh2912/next-pwa": "^10.2.5",
     "@types/node": "^20",
     "@types/react": "^18",
