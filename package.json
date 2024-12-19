@@ -31,7 +31,7 @@
     "babel-plugin-react-css-modules": "^5.2.6",
     "clsx": "^2.1.0",
     "lucide-react": "^0.363.0",
-    "next": "14.1.4",
+    "next": "14.2.15",
     "sass": "^1.72.0",
     "tailwind-merge": "^2.2.2",
     "tone": "^14.7.77",
