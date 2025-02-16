@@ -1,0 +1,216 @@
+@use "sass:color";
+
+/* colors used for the instructions paper */
+$paperBorderColor: #f8f3e8;
+$paperCenterColor: color.adjust($paperBorderColor, $lightness: 1%);
+
+$foldSpeed: 0.18s;
+$paperPartWidth: 156px;
+$cardBorderRadius: 1px;
+
+/* apply card box shadow */
+.cardBoxShadow {
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* container for all of the instructions paper */
+.stage {
+  z-index: 999;
+  transition: box-shadow;
+  transition-delay: 0s;
+
+  /* fix bug: the paper is too low on the screen when it is open, infinitely opening and closing */
+  margin-top: -30px;
+  padding-top: 30px;
+}
+
+.open {
+  @extend .cardBoxShadow;
+  transition-delay: calc(#{$foldSpeed} * 2);
+
+  .box2 {
+    transition-delay: 0s;
+    box-shadow: unset;
+    transform: rotateY(-360deg);
+  }
+
+  .box3 {
+    transform: rotateX(0deg);
+    transition-delay: $foldSpeed;
+  }
+
+  .box4 {
+    transform: rotateX(0deg);
+    transition-delay: $foldSpeed;
+  }
+}
+
+//Folds
+.box {
+  position: absolute;
+  background: $paperCenterColor;
+  width: $paperPartWidth;
+  height: $paperPartWidth;
+  border: 10px solid $paperBorderColor;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  border-radius: calc($cardBorderRadius - 1px);
+  backface-visibility: hidden;
+  transition: transform $foldSpeed;
+
+  >ul>li>svg {
+    display: inline-block;
+  }
+
+  >div>ul>li>svg {
+    display: inline-block;
+  }
+}
+
+
+.box1 {
+  @extend .box;
+  @extend .cardBoxShadow;
+
+  border-radius: $cardBorderRadius 0 0 0;
+  border-right: none;
+  border-bottom: none;
+
+  padding-right: 10px;
+  margin-bottom: none;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.box2 {
+  @extend .box;
+
+  left: $paperPartWidth;
+
+  border-radius: 0 $cardBorderRadius 0 0;
+
+  border-left: none;
+  border-bottom: none;
+
+  padding-left: 10px;
+
+  transform-origin: 0 0;
+  transform: rotateY(-180deg);
+  transition-delay: $foldSpeed;
+}
+
+.box3 {
+  @extend .box;
+  top: $paperPartWidth;
+  width: $paperPartWidth;
+
+  border-radius: 0 0 0 $cardBorderRadius;
+  border-top: none;
+  border-right: none;
+
+  padding: 10px;
+  padding-left: 1px;
+  padding-bottom: 6px;
+
+  transform: rotateX(-180deg);
+  transform-origin: 0 0;
+  transition-delay: 0s;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.box4 {
+  @extend .box;
+  top: $paperPartWidth;
+  left: $paperPartWidth;
+
+  border-radius: 0 0 $cardBorderRadius 0;
+  border-top: none;
+  border-left: none;
+
+  transform: rotateX(-180deg);
+  transform-origin: 0 0;
+  transition-delay: 0s;
+}
+
+.instructionsPaperKeymap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  gap: 2px;
+
+  .instructionsPaperRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+
+    .instructionsPaperCell {
+      display: block;
+      border: 1px solid black;
+      width: 16px;
+      border-radius: 2px;
+      text-align: center;
+    }
+
+    .instructionsPaperKey {
+      @extend .instructionsPaperCell;
+      display: inline-block;
+    }
+  }
+}
+
+
+.introCardBox {
+  @extend .stage;
+  position: absolute;
+  top: 10%;
+
+  z-index: 999999;
+  @extend .box1;
+  @extend .cardBoxShadow;
+
+  border: none;
+
+  background-color: $paperCenterColor;
+
+  width: 300px;
+  min-height: 120px;
+  padding: 16px 24px;
+  font-size: 13px;
+
+  backface-visibility: visible;
+
+  color: #202020;
+  text-shadow: 0 0 1px rgba(20, 20, 20, 0.5);
+
+  transform-origin: 0 0;
+  transform: translate(-50%, -50%) rotateX(0deg);
+  transition:
+    top 0.5s cubic-bezier(0.4, 0.3, 0.2, 0.1),
+    transform 0.5s cubic-bezier(0.4, 0.3, 0.2, 0.1),
+    box-shadow 0.25s linear;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.firstIntroCardBox {
+  @extend .introCardBox;
+
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  transform: translate(-50%, -50%) rotateX(20deg);
+}
+
+.firstIntroCardBoxShown {
+  transform: translate(-50%, -50%) rotateX(0deg);
+}
