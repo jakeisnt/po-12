@@ -4,4 +4,8 @@ module.exports = {
   //   use: {
   //     loader: 'babel-loader'
   //   }
+  presets: [["next/babel"]],
+  plugins: [
+    // Keep only required plugins
+  ],
 };

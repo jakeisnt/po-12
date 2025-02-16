@@ -16,8 +16,10 @@ const nextConfig = {
   // we use babel for packaging
   // but force swc for nextjs app development.
   experimental: {
-    forceSwcTransforms: true,
+    // Only keep actually experimental features you need
   },
+  // Add modern config options
+  output: "standalone",
 
   webpack(config) {
     // Handle SVG files
