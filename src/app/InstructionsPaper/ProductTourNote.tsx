@@ -101,7 +101,7 @@ const ProductTourNote = ({
 
     const curTimeout = queueLetter();
     return () => clearTimeout(curTimeout);
-  }, [isCurrentStep]);
+  }, [isCurrentStep, highlightNextButton]);
 
   useEffect(() => {
     const { text, classNameToClick } = step;

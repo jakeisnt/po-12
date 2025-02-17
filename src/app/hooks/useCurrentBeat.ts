@@ -30,7 +30,7 @@ const useCurrentBeat = (bpm: number) => {
 
     clearInterval(intervalRef.current);
     startPlaying(bpm);
-  }, [bpm]);
+  }, [bpm, startPlaying]);
 
   /**
    * Start the pocket operator's continuous playback.
@@ -60,7 +60,10 @@ const useCurrentBeat = (bpm: number) => {
   /**
    * Toggle the playing state of the pocket operator.
    */
-  const togglePlaying = useMemo(() => (playing ? pause : play), [playing]);
+  const togglePlaying = useMemo(
+    () => (playing ? pause : play),
+    [playing, pause, play]
+  );
 
   return { currentBeat, playing, togglePlaying, pause };
 };

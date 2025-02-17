@@ -163,6 +163,7 @@ const PocketOperator = ({
       }
     },
     [
+      setSelectedSound,
       queueSelectedPattern,
       setSelectingMode,
       triggerAnimation,
