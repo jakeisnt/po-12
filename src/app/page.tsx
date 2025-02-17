@@ -1,5 +1,5 @@
 import { Metadata, Viewport } from "next";
-import PocketOperatorPage from "./pocket-operator/PocketOperatorPage";
+import PocketOperatorPage from "./PocketOperatorPage";
 
 import { Open_Sans } from "next/font/google";
 
