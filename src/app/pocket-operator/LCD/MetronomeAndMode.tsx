@@ -1,7 +1,7 @@
 import classes from "./lcd.module.scss";
 
 import { getBPMMode, modeToBPM, modes } from "../utils";
-import { cn } from "../../../../lib/utils";
+import { cn } from "@/lib/utils";
 import { ThinMetronomeLeft } from "../icons";
 
 type MetronomeAndModeProps = {

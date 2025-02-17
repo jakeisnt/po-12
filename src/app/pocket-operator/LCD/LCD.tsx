@@ -11,7 +11,7 @@ import { SuccessIcon, FailIcon, PlayingIcon, RecordingIcon } from "./icons";
 import MetronomeAndMode from "./MetronomeAndMode";
 import type { AnimationState } from "../utils";
 import BottomBeatIndicator from "./BottomBeatIndicator";
-import { cn } from "../../../../lib/utils";
+import { cn } from "@/lib/utils";
 
 type LCDProps = {
   bpm: number;

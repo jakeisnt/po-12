@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef } from "react";
 
 import InstructionsCardButton from "./InstructionsCardButton";
 import classes from "./instructionsPaper.module.scss";
-import { cn } from "../../../../lib/utils";
+import { cn } from "@/lib/utils";
 
 type ProductTourIntroProps = {
   onClickNo: () => void;

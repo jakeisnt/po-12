@@ -1,3 +1,5 @@
+import path from "path";
+
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
@@ -57,6 +59,12 @@ const nextConfig = {
       // We're in the browser build, so we can safely exclude the sharp module
       config.externals.push("sharp");
     }
+
+    // Add path alias
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": path.join(__dirname, "src"),
+    };
 
     // audio file support
     config.module.rules.push({
@@ -136,5 +144,3 @@ module.exports = (_phase, { defaultConfig }) => {
 
   return finalConfig;
 };
-
-module.exports = nextConfig;

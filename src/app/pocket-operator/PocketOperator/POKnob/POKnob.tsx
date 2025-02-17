@@ -1,5 +1,5 @@
 import classes from "./knob.module.scss";
-import { cn } from "../../../../../lib/utils";
+import { cn } from "@/lib/utils";
 import { type Dispatch, type SetStateAction, useState } from "react";
 
 type POKnob = {

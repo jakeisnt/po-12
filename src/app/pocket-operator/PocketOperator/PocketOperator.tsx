@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "../../../../lib/utils";
+import { cn } from "@/lib/utils";
 import type { Dispatch, SetStateAction } from "react";
 import NumberedButton from "./numberedButton";
 import useDeviceAnimations from "../hooks/useDeviceAnimations";
@@ -118,7 +118,7 @@ const PocketOperator = ({
     // We do not refresh with the current pattern as
     // we do not retrigger the current beat whenever the current pattern changes!
     // We wait for the next time to come around.
-    // eslint-disable-next-line react-_hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentBeatIndex, playing]
   );
 

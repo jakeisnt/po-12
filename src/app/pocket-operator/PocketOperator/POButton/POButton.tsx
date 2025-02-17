@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import classes from "./button.module.scss";
-import { cn } from "../../../../../lib/utils";
+import { cn } from "@/lib/utils";
 
 enum ButtonStatus {
   NONE = "none",
