@@ -70,26 +70,6 @@ export const viewport: Viewport = {
   themeColor: "#262625",
 };
 
-// Plan for implementing the product tour:
-// 1.  Clean up the code a little bit. The abstraction boundaries are a bit broken right now.
-//     The files are a bit too big as-is - they can be broken up into smaller parts.
-//     We also need to 'harden' the types a bit to make sure we catch bugs and regressions.
-
-// the guy's body shouldn't ever be shown when switching patterns. only the head should show.
-
-// 2. Add a first-time piece of paper that asks whether the user is familiar with the pocket operator.
-//   If they are, they can skip the tutorial. If they aren't, they can go through the tutorial.
-
-//  Start by highlighting the kick. 'Press a button to play a sound.' the screen darkens around everything but the sticky note thing,
-// the screen, and the kick button (1).
-// then flip the note to the other side. 'Now play the snare.' Focus on button 4, the snare button, I think.
-// Then to the next stage. Hit the play button for 1 bar and pause.
-
-// onboarding ui idea: we use this sticky notes metaphor. on desktop, we can pile the sticky notes on top of one another.'
-
-// no, we need a flipbook animation. the next instruction shows after the previous one and the page 'turns over' (3979 egrees) to reveal it.
-// we then move the notes to a particular part of the screen.
-
 const openSans = Open_Sans({
   weight: "500",
   display: "swap",
@@ -98,13 +78,17 @@ const openSans = Open_Sans({
 
 const NextPOPage = () => {
   return (
-    <html lang="en">
-      <body>
-        <main className={openSans.className}>
-          <PocketOperatorPage />
-        </main>
-      </body>
-    </html>
+    <main
+      className={openSans.className}
+      style={{
+        backgroundColor: "#262625",
+        height: "100vh",
+        width: "100vw",
+        overflow: "hidden",
+      }}
+    >
+      <PocketOperatorPage />
+    </main>
   );
 };
 
