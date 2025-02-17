@@ -32,6 +32,10 @@ export function cn(...inputs: ClassValue[]): string {
   return classes.join(" ");
 }
 
+/**
+ * Check if the device is a touch device
+ * @returns True if the device is a touch device
+ */
 export const isTouchDevice = () =>
   (typeof window !== "undefined" && "ontouchstart" in window) ||
   (typeof navigator !== "undefined" && navigator.maxTouchPoints > 0);
