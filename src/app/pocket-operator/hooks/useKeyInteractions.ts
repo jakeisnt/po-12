@@ -1,6 +1,11 @@
-import { useState, useMemo, useEffect } from "react"
-import { SelectingMode } from "../utils"
+import { useState, useMemo, useEffect } from "react";
+import type { Dispatch, SetStateAction } from "react";
+import { SelectingMode } from "../utils";
 
+/**
+ * Map of keys to button numbers.
+ * Allows the user to use the keyboard to trigger button clicks.
+ */
 const keymap = {
   q: 5,
   w: 6,
@@ -14,17 +19,25 @@ const keymap = {
   x: 14,
   c: 15,
   v: 16,
-}
+};
 
-// invoke button click events
+/**
+ * Allow the user to interact with the pocket operator with their keyboard.
+ */
 const useKeyInteractions = ({
   onButtonClick,
   setSelectingMode,
   setRecording,
   setPlaying,
   goToNextBPM,
+}: {
+  onButtonClick: Dispatch<SetStateAction<number>>;
+  setSelectingMode: Dispatch<SetStateAction<SelectingMode>>;
+  setRecording: Dispatch<SetStateAction<boolean>>;
+  setPlaying: () => void;
+  goToNextBPM: () => void;
 }) => {
-  const [keyedButtons, setKeyedButtons] = useState<number[]>([])
+  const [keyedButtons, setKeyedButtons] = useState<number[]>([]);
 
   const keyActions = useMemo(
     () => ({
@@ -37,48 +50,55 @@ const useKeyInteractions = ({
       ö: () => setRecording((recording) => !recording),
       ";": () => setRecording((recording) => !recording),
     }),
-    [setSelectingMode, setRecording, setPlaying, goToNextBPM],
-  )
+    [setSelectingMode, setRecording, setPlaying, goToNextBPM]
+  );
 
   useEffect(() => {
+    /**
+     * Add a button to the keyed buttons array when a key is pressed.
+     */
     const handleKeyDown = (event: KeyboardEvent) => {
-      // Check if the pressed key corresponds to a button number
-      const buttonNumber = parseInt(event.key)
+      const buttonNumber = Number.parseInt(event.key);
 
       if (!isNaN(buttonNumber)) {
-        // Trigger the button click event
-        onButtonClick(buttonNumber)
-        setKeyedButtons((prev) => [...prev, buttonNumber])
-      } else if (keymap[event.key]) {
-        onButtonClick(keymap[event.key])
-        setKeyedButtons((prev) => [...prev, keymap[event.key]])
-      } else if (keyActions[event.key]) {
-        keyActions[event.key]()
+        onButtonClick(buttonNumber);
+        setKeyedButtons((prev) => [...prev, buttonNumber]);
+      } else if (keymap[event.key as keyof typeof keymap]) {
+        onButtonClick(keymap[event.key as keyof typeof keymap]);
+        setKeyedButtons((prev) => [
+          ...prev,
+          keymap[event.key as keyof typeof keymap],
+        ]);
+      } else if (keyActions[event.key as keyof typeof keyActions]) {
+        keyActions[event.key as keyof typeof keyActions]();
       }
-    }
+    };
 
+    /**
+     * Remove a button from the keyed buttons array when a key is released.
+     */
     const handleKeyUp = (event: KeyboardEvent) => {
-      const buttonNumber = parseInt(event.key)
+      const buttonNumber = Number.parseInt(event.key);
 
       if (!isNaN(buttonNumber)) {
-        setKeyedButtons((prev) => prev.filter((key) => key !== buttonNumber))
-      } else if (keymap[event.key]) {
+        setKeyedButtons((prev) => prev.filter((key) => key !== buttonNumber));
+      } else if (keymap[event.key as keyof typeof keymap]) {
         setKeyedButtons((prev) =>
-          prev.filter((key) => key !== keymap[event.key]),
-        )
+          prev.filter((key) => key !== keymap[event.key as keyof typeof keymap])
+        );
       }
-    }
+    };
 
-    window.addEventListener("keydown", handleKeyDown)
-    window.addEventListener("keyup", handleKeyUp)
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown)
-      window.removeEventListener("keyup", handleKeyUp)
-    }
-  }, [onButtonClick, keyActions])
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [onButtonClick, keyActions]);
 
-  return { keyedButtons }
-}
+  return { keyedButtons };
+};
 
-export default useKeyInteractions
+export default useKeyInteractions;

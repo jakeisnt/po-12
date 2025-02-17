@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import classes from "./button.module.scss";
-import { cn } from "../../../lib/utils";
+import { cn } from "../../../../../lib/utils";
 
 enum ButtonStatus {
   NONE = "none",
@@ -87,7 +87,7 @@ const Button = ({
 
           onClick?.();
 
-          typeof navigator !== "undefined" && navigator?.vibrate?.(100);
+          // typeof navigator !== "undefined" && navigator?.vibrate?.(100);
           e.currentTarget.classList.add(classes.userTriggeredActiveButton);
 
           // Prevent focus on click.

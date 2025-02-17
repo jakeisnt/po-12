@@ -1,3 +1,3 @@
-import PocketOperator from "./PocketOperator"
+import PocketOperator from "./PocketOperator";
 
-export default PocketOperator
+export default PocketOperator;

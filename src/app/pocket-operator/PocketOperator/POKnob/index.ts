@@ -1,3 +1,3 @@
-import POKnob from "./POKnob"
+import POKnob from "./POKnob";
 
-export default POKnob
+export default POKnob;

@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 import classes from "./instructionsPaper.module.scss";
 import { useState } from "react";
 import {
@@ -12,8 +11,21 @@ import {
   PlayIcon,
 } from "./icons";
 import InstructionsCardButton from "./InstructionsCardButton";
+import type { Dispatch, SetStateAction } from "react";
 
-// paper that unfolds to reveal instructions that you can read.
+type InstructionsPaperProps = {
+  tilt: { x: number; y: number };
+  showing: boolean;
+  setShowing: Dispatch<SetStateAction<boolean>>;
+  pinned: boolean;
+  setPinned: Dispatch<SetStateAction<boolean>>;
+  takeTour: () => void;
+  onTouchDevice: boolean;
+};
+
+/**
+ * A paper that unfolds to reveal instructions that you can read.
+ */
 const InstructionsPaper = ({
   tilt: { x, y },
   showing,
@@ -22,7 +34,7 @@ const InstructionsPaper = ({
   setPinned,
   takeTour,
   onTouchDevice,
-}) => {
+}: InstructionsPaperProps) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -212,31 +224,31 @@ const InstructionsPaper = ({
               <div className={classes.instructionsPaperKey}>&#9141;</div>
             </div>
           </div>
-          <Link
+          <a
             href="https://teenage.engineering/store/po-12"
             target="_blank"
             className="text-gray-500 hover:text-gray-400"
           >
             link: buy original
-          </Link>
+          </a>
 
-          <Link
+          <a
             href="https://teenage.engineering/guides/po-12/en"
             target="_blank"
             className="text-gray-500 hover:text-gray-400"
           >
             link: full manual
-          </Link>
+          </a>
 
           <span>
             by{" "}
-            <Link
+            <a
               className=" text-gray-500 hover:text-gray-400"
               href="https://twitter.com/@jakeissnt"
               target="_blank"
             >
               @jakeissnt
-            </Link>{" "}
+            </a>{" "}
           </span>
           <div className="flex justify-between align-baseline w-full">
             <InstructionsCardButton

@@ -1,9 +1,8 @@
-import { ReactComponent as ThinMetronomeLeft } from "../icons/thin-metronome-left.svg";
-
 import classes from "./lcd.module.scss";
 
 import { getBPMMode, modeToBPM, modes } from "../utils";
-import { cn } from "../../lib/utils";
+import { cn } from "../../../../lib/utils";
+import { ThinMetronomeLeft } from "../icons";
 
 type MetronomeAndModeProps = {
   currentBeat: number;

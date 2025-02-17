@@ -1,33 +1,33 @@
-import classes from "../lcd.module.scss"
+import classes from "../lcd.module.scss";
 
-import { isBetween } from "../../utils"
+import { isBetween } from "../../utils";
 
 const SpoolFeeder = ({
   currentBeat,
   playing,
 }: {
-  currentBeat: number
-  playing: boolean
+  currentBeat: number;
+  playing: boolean;
 }) => {
-  let inactiveIndex
+  let inactiveIndex;
 
   if (playing) {
     if (isBetween(currentBeat % 8, 7, 8)) {
-      inactiveIndex = 7
+      inactiveIndex = 7;
     } else if (isBetween(currentBeat % 8, 6, 7)) {
-      inactiveIndex = 6
+      inactiveIndex = 6;
     } else if (isBetween(currentBeat % 8, 5, 6)) {
-      inactiveIndex = 5
+      inactiveIndex = 5;
     } else if (isBetween(currentBeat % 8, 4, 5)) {
-      inactiveIndex = 4
+      inactiveIndex = 4;
     } else if (isBetween(currentBeat % 8, 3, 4)) {
-      inactiveIndex = 3
+      inactiveIndex = 3;
     } else if (isBetween(currentBeat % 8, 2, 3)) {
-      inactiveIndex = 2
+      inactiveIndex = 2;
     } else if (isBetween(currentBeat % 8, 1, 2)) {
-      inactiveIndex = 1
+      inactiveIndex = 1;
     } else {
-      inactiveIndex = 0
+      inactiveIndex = 0;
     }
   }
 
@@ -79,7 +79,7 @@ const SpoolFeeder = ({
         className={inactiveIndex === 0 ? classes.hidden : classes.visible}
       />
     </>
-  )
-}
+  );
+};
 
-export default SpoolFeeder
+export default SpoolFeeder;

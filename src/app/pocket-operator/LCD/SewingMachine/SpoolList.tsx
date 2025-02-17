@@ -1,27 +1,27 @@
-import classes from "../lcd.module.scss"
+import classes from "../lcd.module.scss";
 
 const SpoolList = ({ currentBeat, queuedSelectedPattern, spoolState }) => {
-  let activeSpool = 0
+  let activeSpool = 0;
 
   if (queuedSelectedPattern) {
     if (currentBeat === 0) {
-      activeSpool = spoolState
+      activeSpool = spoolState;
     } else {
-      const currentTime = currentBeat % 4
+      const currentTime = currentBeat % 4;
 
       // spread the time in the interval [0, 4) into 5 equal parts,
       // each distributed to the following spool:
       // [0, 0.8) -> 1, 2, 3, 2, 1
       if (currentTime < 0.8) {
-        activeSpool = 1
+        activeSpool = 1;
       } else if (currentTime >= 0.8 && currentTime < 1.6) {
-        activeSpool = 2
+        activeSpool = 2;
       } else if (currentTime >= 1.6 && currentTime < 2.4) {
-        activeSpool = 3
+        activeSpool = 3;
       } else if (currentTime >= 2.4 && currentTime < 3.2) {
-        activeSpool = 2
+        activeSpool = 2;
       } else {
-        activeSpool = 1
+        activeSpool = 1;
       }
     }
   }
@@ -71,7 +71,7 @@ const SpoolList = ({ currentBeat, queuedSelectedPattern, spoolState }) => {
         <rect x="105.5" y="8" width="6" height="5" fill="currentColor" />
       </g>
     </>
-  )
-}
+  );
+};
 
-export default SpoolList
+export default SpoolList;

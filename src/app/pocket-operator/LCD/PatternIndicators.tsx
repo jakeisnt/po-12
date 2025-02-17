@@ -1,5 +1,5 @@
-import classes from "./lcd.module.scss"
-import { Dispatch, SetStateAction } from "react"
+import classes from "./lcd.module.scss";
+import type { Dispatch, SetStateAction } from "react";
 
 const selectPatternVariant = (patternVariant: number) => {
   const mapping = {
@@ -19,19 +19,19 @@ const selectPatternVariant = (patternVariant: number) => {
     14: ["mid", "topVert", "bottomVert"],
     15: ["topLeft", "topRight", "bottom"],
     16: ["mid", "bottomLeft"],
+  };
+
+  if (!mapping[patternVariant as keyof typeof mapping]) {
+    throw new Error(`Invalid pattern variant: ${patternVariant}`);
   }
 
-  if (!mapping[patternVariant]) {
-    throw new Error(`Invalid pattern variant: ${patternVariant}`)
-  }
-
-  return mapping[patternVariant]
-}
+  return mapping[patternVariant as keyof typeof mapping];
+};
 
 interface SinglePatternIndicatorProps {
-  hideRHS?: boolean
-  selectedPattern: number
-  hidden?: boolean
+  hideRHS?: boolean;
+  selectedPattern: number;
+  hidden?: boolean;
 }
 
 const SinglePatternIndicator = ({
@@ -39,7 +39,7 @@ const SinglePatternIndicator = ({
   selectedPattern,
   hidden = false,
 }: SinglePatternIndicatorProps) => {
-  const cfg = selectedPattern ? selectPatternVariant(selectedPattern) : []
+  const cfg = selectedPattern ? selectPatternVariant(selectedPattern) : [];
 
   return (
     <svg
@@ -47,7 +47,8 @@ const SinglePatternIndicator = ({
       height="22"
       viewBox="0 0 24 22"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       {/* top left corner */}
       <rect
         y="7.08313"
@@ -150,14 +151,14 @@ const SinglePatternIndicator = ({
         </>
       )}
     </svg>
-  )
-}
+  );
+};
 
 interface PatternIndicatorProps {
-  selectedPattern: number
-  setSelectedPattern: Dispatch<SetStateAction<number>>
-  queuedSelectedPattern: number | null
-  currentBeat: number
+  selectedPattern: number;
+  setSelectedPattern: Dispatch<SetStateAction<number>>;
+  queuedSelectedPattern: number | null;
+  currentBeat: number;
 }
 
 /* Indicates what pattern the user has selected */
@@ -175,7 +176,8 @@ const PatternIndicators = ({
         setSelectedPattern?.((currentPattern: number) =>
           currentPattern === 16 ? 1 : currentPattern + 1,
         )
-      }>
+      }
+    >
       <SinglePatternIndicator
         hidden={currentBeat === 15}
         selectedPattern={
@@ -210,7 +212,7 @@ const PatternIndicators = ({
         hideRHS
       />
     </div>
-  )
-}
+  );
+};
 
-export default PatternIndicators
+export default PatternIndicators;

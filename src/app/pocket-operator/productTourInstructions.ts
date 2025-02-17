@@ -1,8 +1,8 @@
 // steps shown in the product tour.
 
 type Step = {
-  substeps: { text?: string; classNameToClick: string }[]
-}
+  substeps: { text?: string; classNameToClick: string }[];
+};
 
 const TOUR_STEPS: Step[] = [
   {
@@ -216,7 +216,7 @@ const TOUR_STEPS: Step[] = [
       },
     ],
   },
-]
+];
 
-export type { Step }
-export { TOUR_STEPS }
+export type { Step };
+export { TOUR_STEPS };

@@ -50,7 +50,7 @@ $light: 255;
     // necessary to make sure this element is displayed at all
     content: "";
     opacity: 0.2;
-    box-shadow: inset 0 0 $glow $glow / 2 rgba($dark, $dark, $dark, 0.25);
+    box-shadow: inset 0 0 $glow calc($glow / 2) rgba($dark, $dark, $dark, 0.25);
   }
 
   &:hover {

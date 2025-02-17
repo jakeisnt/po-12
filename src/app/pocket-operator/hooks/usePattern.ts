@@ -1,25 +1,30 @@
 import { useState, useMemo, useCallback } from "react";
 
-import useLocalStorage from "../../lib/useLocalStorage";
+import { useLocalStorage } from "./useLocalStorage";
 
-type Note = { note: number };
-type Pattern = { notes: Note[][] };
+import type { Note, Pattern } from "../PocketOperator/types";
 
-// pattern with all notes off.
-// used to disable everything at the end of every beat.
+// Pattern with all notes off.
+// Used to disable everything at the end of every beat.
 const ALL_OFF_PATTERN: Pattern = {
   notes: Array.from({ length: 16 }, () => []),
 };
 
+/**
+ * Deep copy an array of patterns.
+ */
 const deepCopyPatterns = (patterns: Pattern[]) => {
   return [...patterns.map((p) => ({ ...p, notes: [...p.notes] }))];
 };
 
+/**
+ * Is a pattern non-empty?
+ */
 const isNonEmpty = (pattern: Pattern) => {
   return pattern.notes.some((notes) => notes.length > 0);
 };
 
-// a default demo pattern.
+// A default demo pattern.
 const pattern1 = {
   notes: [
     [{ note: 1 }],
@@ -41,6 +46,9 @@ const pattern1 = {
   ],
 };
 
+/**
+ * Is a string valid JSON?
+ */
 const isValidJSON = (v: any) => {
   try {
     JSON.parse(v);
@@ -50,8 +58,10 @@ const isValidJSON = (v: any) => {
   }
 };
 
-/*
- * a valid note is an object with a note property that is a number between 1-16.
+/**
+ * Is a note valid?
+ *
+ * A valid note is an object with a note property that is a number between 1-16.
  */
 const isValidNote = (note: any): note is Note => {
   return (
@@ -65,6 +75,8 @@ const isValidNote = (note: any): note is Note => {
 
 /**
  * Is a single pattern valid?
+ *
+ * A valid pattern is an object with a notes property that is an array of 16 places.
  */
 const isValidPattern = (pattern: any): pattern is Pattern[] => {
   if (!(typeof pattern === "object")) return false;
@@ -75,17 +87,23 @@ const isValidPattern = (pattern: any): pattern is Pattern[] => {
   });
 };
 
-// a valid pattern set is an array of 16 patterns, each with 16 places.
-// each place is an array of notes.
+/**
+ * Is a pattern set valid?
+ *
+ * A valid pattern set is an array of 16 patterns, each with 16 places.
+ * Each place is an array of notes.
+ */
 const isValidPatternSet = (v: any): v is Pattern[] => {
   if (!Array.isArray(v)) return false;
   if (v.length !== 16) return false;
   return v.every(isValidPattern);
 };
 
-// if we have less than 16 patterns, fill the rest with the empty pattern
+/**
+ * If we have less than 16 patterns, fill the rest with the empty pattern.
+ */
 const padPatterns = (patterns: Pattern[]) => {
-  let currentPatterns = patterns;
+  const currentPatterns = patterns;
 
   while (patterns.length < 16) {
     patterns.push(ALL_OFF_PATTERN);
@@ -94,6 +112,9 @@ const padPatterns = (patterns: Pattern[]) => {
   return currentPatterns;
 };
 
+/**
+ * Use patterns.
+ */
 const usePatterns = () => {
   const [patterns, setPatterns] = useLocalStorage(
     "pocketOperatorPatternGroups",
@@ -104,6 +125,9 @@ const usePatterns = () => {
     "success" | "fail" | undefined
   >();
 
+  /**
+   * Enable or disable a note in a pattern.
+   */
   const togglePatternNote = useCallback(
     (currentPattern: number, placeInPattern: number, noteInPlace: number) => {
       setPatterns((patterns) => {
@@ -127,10 +151,11 @@ const usePatterns = () => {
     []
   );
 
-  // read patterns from a file
+  /**
+   * Read patterns from a file.
+   */
   const setPatternsFromFile = useCallback(
     (file: File) => {
-      // file to string
       const reader = new FileReader();
       reader.onload = (e) => {
         const text = e.target?.result;
@@ -157,8 +182,11 @@ const usePatterns = () => {
     [setPatterns]
   );
 
-  // if a pattern is non-empty, it's supported.
-  // only show which pattern is supported if it's non-empty.
+  /**
+   * Get the indices of the supported patterns.
+   *
+   * A supported pattern is a pattern that is non-empty.
+   */
   const supportedPatternIndices = useMemo(
     () =>
       patterns
@@ -168,6 +196,9 @@ const usePatterns = () => {
     [patterns]
   );
 
+  /**
+   * Reset the patterns to the default demo pattern.
+   */
   const resetPatterns = useCallback(
     () => setPatterns(padPatterns([pattern1])),
     [setPatterns]
@@ -183,5 +214,4 @@ const usePatterns = () => {
   };
 };
 
-export type { Note, Pattern };
 export { usePatterns };

@@ -1,3 +1,3 @@
-import SewingMachine from "./SewingMachine"
+import SewingMachine from "./SewingMachine";
 
-export default SewingMachine
+export default SewingMachine;

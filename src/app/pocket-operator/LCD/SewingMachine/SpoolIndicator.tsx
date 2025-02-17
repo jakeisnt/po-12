@@ -1,19 +1,19 @@
-import { isBetween } from "../../utils"
+import { isBetween } from "../../utils";
 
-import classes from "../lcd.module.scss"
+import classes from "../lcd.module.scss";
 
 const SpoolIndicator = ({ currentBeat }: { currentBeat: number }) => {
-  const beatOp = currentBeat % 7
+  const beatOp = currentBeat % 7;
 
-  let activeIndex = 0
+  let activeIndex = 0;
   if (isBetween(beatOp, 0, 2)) {
-    activeIndex = 0
+    activeIndex = 0;
   } else if (isBetween(beatOp, 2, 3) || isBetween(beatOp, 6, 7)) {
-    activeIndex = 1
+    activeIndex = 1;
   } else if (isBetween(beatOp, 3, 4) || isBetween(beatOp, 5, 6)) {
-    activeIndex = 2
+    activeIndex = 2;
   } else if (isBetween(beatOp, 4, 5)) {
-    activeIndex = 3
+    activeIndex = 3;
   }
 
   return (
@@ -40,7 +40,7 @@ const SpoolIndicator = ({ currentBeat }: { currentBeat: number }) => {
         className={activeIndex === 3 ? classes.visible : classes.hidden}
       />
     </>
-  )
-}
+  );
+};
 
-export default SpoolIndicator
+export default SpoolIndicator;

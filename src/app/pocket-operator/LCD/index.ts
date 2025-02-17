@@ -1,3 +1,3 @@
-import LCD from "./LCD"
+import LCD from "./LCD";
 
-export default LCD
+export default LCD;

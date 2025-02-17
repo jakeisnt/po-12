@@ -5,15 +5,16 @@ const OneButtonIcon = () => {
       height="17"
       viewBox="0 0 16 17"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <circle cx="8" cy="8.5" r="7.5" stroke="currentColor" />
       <path
         d="M9.15057 4.27273V13H7.82955V5.59375H7.77841L5.69034 6.95739V5.69602L7.8679 4.27273H9.15057Z"
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 
 const SixteenButtonIcon = () => {
   return (
@@ -22,15 +23,16 @@ const SixteenButtonIcon = () => {
       height="17"
       viewBox="0 0 18 17"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <circle cx="9" cy="8.5" r="8" stroke="currentColor" />
       <path
         d="M6.30469 4.5V12.5H5.09375V5.71094H5.04688L3.13281 6.96094V5.80469L5.12891 4.5H6.30469ZM11.2617 12.6094C10.9049 12.6042 10.5534 12.5391 10.207 12.4141C9.86328 12.2891 9.55078 12.0807 9.26953 11.7891C8.98828 11.4974 8.76302 11.1055 8.59375 10.6133C8.42708 10.1211 8.34375 9.50651 8.34375 8.76953C8.34375 8.07161 8.41276 7.45182 8.55078 6.91016C8.69141 6.36849 8.89323 5.91146 9.15625 5.53906C9.41927 5.16406 9.73698 4.87891 10.1094 4.68359C10.4818 4.48828 10.8997 4.39062 11.3633 4.39062C11.8398 4.39062 12.263 4.48437 12.6328 4.67187C13.0026 4.85937 13.3021 5.11849 13.5313 5.44922C13.763 5.77995 13.9102 6.15625 13.9727 6.57812H12.7813C12.7005 6.24479 12.5404 5.97266 12.3008 5.76172C12.0612 5.55078 11.7487 5.44531 11.3633 5.44531C10.7773 5.44531 10.3203 5.70052 9.99219 6.21094C9.66667 6.72135 9.5026 7.43099 9.5 8.33984H9.55859C9.69661 8.11328 9.86589 7.92057 10.0664 7.76172C10.2695 7.60026 10.4961 7.47656 10.7461 7.39062C10.9987 7.30208 11.2643 7.25781 11.543 7.25781C12.0065 7.25781 12.4258 7.37109 12.8008 7.59766C13.1784 7.82161 13.4792 8.13151 13.7031 8.52734C13.9271 8.92318 14.0391 9.3763 14.0391 9.88672C14.0391 10.3971 13.9232 10.8594 13.6914 11.2734C13.4622 11.6875 13.1393 12.0156 12.7227 12.2578C12.306 12.4974 11.819 12.6146 11.2617 12.6094ZM11.2578 11.5937C11.5651 11.5937 11.8398 11.5182 12.082 11.3672C12.3242 11.2161 12.5156 11.013 12.6563 10.7578C12.7969 10.5026 12.8672 10.2174 12.8672 9.90234C12.8672 9.59505 12.7982 9.3151 12.6602 9.0625C12.5247 8.8099 12.3372 8.60937 12.0977 8.46094C11.8607 8.3125 11.5898 8.23828 11.2852 8.23828C11.0534 8.23828 10.8385 8.28255 10.6406 8.37109C10.4453 8.45964 10.2734 8.58203 10.125 8.73828C9.97656 8.89453 9.85938 9.07422 9.77344 9.27734C9.6901 9.47786 9.64844 9.6901 9.64844 9.91406C9.64844 10.2135 9.71745 10.4909 9.85547 10.7461C9.99609 11.0013 10.1875 11.207 10.4297 11.3633C10.6745 11.5169 10.9505 11.5937 11.2578 11.5937Z"
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 const DotgridIcon = () => {
   return (
     <svg
@@ -38,7 +40,8 @@ const DotgridIcon = () => {
       height="17"
       viewBox="0 0 17 17"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <circle cx="8.5" cy="8.5" r="7.25" stroke="currentColor" />
       <ellipse
         cx="11.9144"
@@ -104,8 +107,8 @@ const DotgridIcon = () => {
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 
 const SCurveIcon = () => {
   return (
@@ -114,7 +117,8 @@ const SCurveIcon = () => {
       height="16"
       viewBox="0 0 16 16"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <circle cx="8" cy="8" r="7.5" stroke="currentColor" />
       <path
         d="M4 7.78947V10C4 11.1046 4.89543 12 6 12V12C7.10457 12 8 11.1046 8 10V7.11111V6C8 4.89543 8.89543 4 10 4V4C11.1046 4 12 4.89565 12 6.00022C12 6.06685 12 6.13165 12 6.19391C12 7.05068 12 8.21053 12 8.21053"
@@ -122,8 +126,8 @@ const SCurveIcon = () => {
         strokeWidth="1.5"
       />
     </svg>
-  )
-}
+  );
+};
 
 const MetronomeIcon = () => {
   return (
@@ -132,7 +136,8 @@ const MetronomeIcon = () => {
       height="16"
       viewBox="0 0 16 16"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <circle cx="8" cy="8" r="7.5" stroke="currentColor" />
       <circle
         cx="1.18421"
@@ -153,8 +158,8 @@ const MetronomeIcon = () => {
         stroke="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 
 const PlayIcon = () => {
   return (
@@ -163,15 +168,16 @@ const PlayIcon = () => {
       height="16"
       viewBox="0 0 16 16"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <circle cx="8" cy="8" r="7.5" stroke="currentColor" />
       <path
         d="M11.531 8.8825L6.47032 11.5795C5.80422 11.9345 5 11.4518 5 10.697L5 5.30298C5 4.54819 5.80422 4.06549 6.47032 4.42048L11.531 7.1175C12.2372 7.49389 12.2372 8.50611 11.531 8.8825Z"
         stroke="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 
 const RecordIcon = () => {
   return (
@@ -180,12 +186,13 @@ const RecordIcon = () => {
       height="16"
       viewBox="0 0 16 16"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <circle cx="8" cy="8" r="7.5" stroke="currentColor" />
       <circle cx="8" cy="8" r="4" stroke="currentColor" />
     </svg>
-  )
-}
+  );
+};
 
 const FXIcon = () => {
   return (
@@ -194,15 +201,16 @@ const FXIcon = () => {
       height="16"
       viewBox="0 0 16 16"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <circle cx="8" cy="8" r="7.5" stroke="currentColor" />
       <path
         d="M2.6456 11V4.45455H6.83878V5.44851H3.83132V7.2255H6.55114V8.21946H3.83132V11H2.6456ZM8.9098 4.45455L10.3512 6.85156H10.4023L11.8501 4.45455H13.2021L11.1854 7.72727L13.234 11H11.8597L10.4023 8.61896H10.3512L8.89382 11H7.52592L9.59375 7.72727L7.55149 4.45455H8.9098Z"
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 const AsteriskIcon = () => {
   return (
     <svg
@@ -210,7 +218,8 @@ const AsteriskIcon = () => {
       height="18"
       viewBox="0 0 18 18"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <circle cx="8.75" cy="9" r="8" stroke="currentColor" />
       <path
         d="M10.9035 4.8045C11.2245 4.37156 11.8471 4.3057 12.2516 4.66191V4.66191C12.6286 4.99399 12.6698 5.56705 12.3441 5.94962L9.28126 9.5471L6.37115 13.4702C6.04973 13.9035 5.42654 13.9693 5.02167 13.6127V13.6127C4.64476 13.2808 4.60299 12.7082 4.92773 12.3251L8.12087 8.55773L10.9035 4.8045Z"
@@ -225,8 +234,8 @@ const AsteriskIcon = () => {
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 
 const DialIcon = () => {
   return (
@@ -235,7 +244,8 @@ const DialIcon = () => {
       height="16"
       viewBox="0 0 16 17"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect
         x="0.5"
         y="0.5"
@@ -247,8 +257,8 @@ const DialIcon = () => {
       <circle cx="8" cy="8" r="5.5" stroke="currentColor" />
       <circle cx="8" cy="8" r="4" fill="currentColor" />
     </svg>
-  )
-}
+  );
+};
 
 export {
   OneButtonIcon,
@@ -261,4 +271,4 @@ export {
   FXIcon,
   AsteriskIcon,
   DialIcon,
-}
+};

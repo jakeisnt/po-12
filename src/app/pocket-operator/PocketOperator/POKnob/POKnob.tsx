@@ -1,6 +1,6 @@
 import classes from "./knob.module.scss";
-import { cn } from "../../../lib/utils";
-import { Dispatch, SetStateAction, useState } from "react";
+import { cn } from "../../../../../lib/utils";
+import { type Dispatch, type SetStateAction, useState } from "react";
 
 type POKnob = {
   level: number;
@@ -35,15 +35,15 @@ const POKnob = ({
 
   const rotation = (level / maxLevel) * knobEndAngle + knobStartAngle;
 
-  const setRotation = (rotation) => {
+  const setRotation = (rotation: number) => {
     const level = ((rotation - knobStartAngle) / knobEndAngle) * maxLevel;
 
     // setLevel(Math.max(Math.min(level, maxLevel), minLevel))
     setLevel((prevLevel: number) => {
       // if we cross over a whole number (level), send a slight 'ticking' vibration
-      if (Math.floor(level) !== Math.floor(prevLevel)) {
-        typeof navigator !== "undefined" && navigator?.vibrate?.(50);
-      }
+      // if (Math.floor(level) !== Math.floor(prevLevel)) {
+      //   typeof navigator !== "undefined" && navigator?.vibrate?.(50);
+      // }
 
       return Math.max(Math.min(level, maxLevel), minLevel);
     });
@@ -81,10 +81,9 @@ const POKnob = ({
         window.addEventListener("touchend", handleTouchUp);
 
         setIsActivelyRotating(true);
-        typeof navigator !== "undefined" && navigator?.vibrate?.(200);
+        // typeof navigator !== "undefined" && navigator?.vibrate?.(200);
       }}
       onWheel={(e) => {
-        e.preventDefault();
         const isLeftHalf =
           e.clientX <
           e.currentTarget.getBoundingClientRect().left +

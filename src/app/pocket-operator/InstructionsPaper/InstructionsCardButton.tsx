@@ -1,7 +1,22 @@
-const InstructionsCardButton = ({ onClick, children, disabled = false }) => {
+type InstructionsCardButtonProps = {
+  onClick: () => void;
+  children: React.ReactNode;
+  disabled?: boolean;
+};
+
+/**
+ * A button that is used within the instructions paper.
+ */
+const InstructionsCardButton = ({
+  onClick,
+  children,
+  disabled = false,
+}: InstructionsCardButtonProps) => {
   return (
     <button
-      className={`border opacity-60 px-1 text-sm shadow hover:shadow-md hover:opacity-100 ${disabled ? "hidden" : "block"}`}
+      className={`border opacity-60 px-1 text-sm shadow hover:shadow-md hover:opacity-100 ${
+        disabled ? "hidden" : "block"
+      }`}
       style={{
         borderRadius: "3px",
         maxHeight: "18px",
@@ -12,13 +27,14 @@ const InstructionsCardButton = ({ onClick, children, disabled = false }) => {
         minWidth: "40px",
       }}
       onClick={(e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        onClick()
-      }}>
+        e.preventDefault();
+        e.stopPropagation();
+        onClick();
+      }}
+    >
       <div style={{ marginTop: "-3px" }}>{children}</div>
     </button>
-  )
-}
+  );
+};
 
-export default InstructionsCardButton
+export default InstructionsCardButton;

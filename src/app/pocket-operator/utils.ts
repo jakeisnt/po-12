@@ -17,17 +17,17 @@ const modes = [
   MetronomeModeNames.HIP_HOP,
   MetronomeModeNames.DISCO,
   MetronomeModeNames.TECHNO,
-]
+];
 
 const getBPMMode = (bpm: number): string | undefined => {
   if (bpm === MetronomeModes.HIP_HOP) {
-    return MetronomeModeNames.HIP_HOP
+    return MetronomeModeNames.HIP_HOP;
   } else if (bpm === MetronomeModes.DISCO) {
-    return MetronomeModeNames.DISCO
+    return MetronomeModeNames.DISCO;
   } else if (bpm === MetronomeModes.TECHNO) {
-    return MetronomeModeNames.TECHNO
+    return MetronomeModeNames.TECHNO;
   }
-}
+};
 
 const modeToBPM = (
   mode:
@@ -36,27 +36,27 @@ const modeToBPM = (
     | MetronomeModeNames.TECHNO,
 ) => {
   if (mode === MetronomeModeNames.HIP_HOP) {
-    return MetronomeModes.HIP_HOP
+    return MetronomeModes.HIP_HOP;
   } else if (mode === MetronomeModeNames.DISCO) {
-    return MetronomeModes.DISCO
+    return MetronomeModes.DISCO;
   } else if (mode === MetronomeModeNames.TECHNO) {
-    return MetronomeModes.TECHNO
+    return MetronomeModes.TECHNO;
   }
-}
+};
 
 const getNextBPM = (bpm: number): number => {
-  const mode = getBPMMode(bpm)
+  const mode = getBPMMode(bpm);
 
   if (mode === MetronomeModeNames.HIP_HOP) {
-    return MetronomeModes.DISCO
+    return MetronomeModes.DISCO;
   } else if (mode === MetronomeModeNames.DISCO) {
-    return MetronomeModes.TECHNO
+    return MetronomeModes.TECHNO;
   } else if (mode === MetronomeModeNames.TECHNO) {
-    return MetronomeModes.HIP_HOP
+    return MetronomeModes.HIP_HOP;
   }
 
-  return bpm
-}
+  return bpm;
+};
 
 enum SelectingMode {
   SOUND = "sound",
@@ -68,21 +68,21 @@ enum SelectingMode {
  * Determine if a number is between two others.
  */
 const isBetween = (num: number, lower: number, upper: number) =>
-  num >= lower && num < upper
+  num >= lower && num < upper;
 
-const oneOver8 = 0.125
-const oneOver16 = 0.0625
+const oneOver8 = 0.125;
+const oneOver16 = 0.0625;
 
 type AnimationState = {
-  hittingKick: boolean
-  hittingHighHat: boolean
-  hittingDrum: boolean
-  finishedHittingDrum: boolean
-  hittingClap: boolean
-  finishedHittingClap: boolean
-  hittingBell1: boolean
-  hittingBell2: boolean
-}
+  hittingKick: boolean;
+  hittingHighHat: boolean;
+  hittingDrum: boolean;
+  finishedHittingDrum: boolean;
+  hittingClap: boolean;
+  finishedHittingClap: boolean;
+  hittingBell1: boolean;
+  hittingBell2: boolean;
+};
 
 /**
  * Throttle a function call to only be invoked every <wait> ms.
@@ -90,34 +90,34 @@ type AnimationState = {
  * @param wait time to wait - in ms
  */
 function throttle(func: (...args: any[]) => void, wait: number) {
-  let context: any, args: any, result: any
-  let timeout: any = null
-  let previous = 0
-  const later = function () {
-    previous = Date.now()
-    timeout = null
-    result = func.apply(context, args)
-    if (!timeout) context = args = null
-  }
+  let context: any, args: any, result: any;
+  let timeout: any = null;
+  let previous = 0;
+  const later = () => {
+    previous = Date.now();
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) context = args = null;
+  };
   return function (...innerArgs: any[]) {
-    const now = Date.now()
-    if (!previous) previous = now
-    const remaining = wait - (now - previous)
-    context = this
-    args = innerArgs
+    const now = Date.now();
+    if (!previous) previous = now;
+    const remaining = wait - (now - previous);
+    context = this;
+    args = innerArgs;
     if (remaining <= 0 || remaining > wait) {
       if (timeout) {
-        clearTimeout(timeout)
-        timeout = null
+        clearTimeout(timeout);
+        timeout = null;
       }
-      previous = now
-      result = func.apply(context, args)
-      if (!timeout) context = args = null
+      previous = now;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
     } else if (!timeout) {
-      timeout = setTimeout(later, remaining)
+      timeout = setTimeout(later, remaining);
     }
-    return result
-  }
+    return result;
+  };
 }
 
 /**
@@ -128,8 +128,8 @@ function throttle(func: (...args: any[]) => void, wait: number) {
  * @returns
  */
 const fixBetween = (min: number, max: number, val: number) => {
-  return Math.min(max, Math.max(min, val))
-}
+  return Math.min(max, Math.max(min, val));
+};
 
 /**
  * Find an element with the provided ClassName at the mouseevent's cursor location.
@@ -141,15 +141,15 @@ const findElementAtCursor = (event: MouseEvent, className: string) => {
   let targetElement: HTMLElement | null = document.elementFromPoint(
     event.clientX,
     event.clientY,
-  ) as HTMLElement
+  ) as HTMLElement;
   while (targetElement && !targetElement.classList.contains(className)) {
-    targetElement = targetElement.parentElement
+    targetElement = targetElement.parentElement;
   }
 
-  return targetElement
-}
+  return targetElement;
+};
 
-export type { AnimationState }
+export type { AnimationState };
 
 export {
   getBPMMode,
@@ -164,4 +164,4 @@ export {
   fixBetween,
   throttle,
   findElementAtCursor,
-}
+};

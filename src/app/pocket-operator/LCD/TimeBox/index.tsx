@@ -3,7 +3,7 @@
 import useTime from "../../hooks/useTime";
 import { useState, useEffect } from "react";
 import classes from "./timeBox.module.scss";
-import { cn } from "../../../lib/utils";
+import { cn } from "../../../../../lib/utils";
 import PartialOneDigit from "./PartialOneDigit";
 import ClockDigit from "./ClockDigit";
 

@@ -1,4 +1,4 @@
-import classes from "./timeBox.module.scss"
+import classes from "./timeBox.module.scss";
 
 const digitMap = {
   default: [0, 0, 0, 0, 0, 0, 0],
@@ -13,13 +13,13 @@ const digitMap = {
   8: [1, 1, 1, 1, 1, 1, 1],
   9: [1, 1, 0, 1, 1, 1, 0],
   "-": [0, 0, 0, 1, 0, 0, 0],
-}
+};
 
 /**
  * A single digit in a clock.
  */
 const ClockDigit = ({ digit }: { digit: number | "-" }) => {
-  const digitArray = digit !== undefined ? digitMap[digit] : digitMap.default
+  const digitArray = digit !== undefined ? digitMap[digit] : digitMap.default;
 
   return (
     <div className={classes.clockDigit}>
@@ -28,7 +28,8 @@ const ClockDigit = ({ digit }: { digit: number | "-" }) => {
         height="25"
         viewBox="0 0 14 25"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+      >
         {/* top */}
         <path
           d="M3 2L11 2L10 3L4 3L3 2Z"
@@ -74,7 +75,7 @@ const ClockDigit = ({ digit }: { digit: number | "-" }) => {
         />
       </svg>
     </div>
-  )
-}
+  );
+};
 
-export default ClockDigit
+export default ClockDigit;

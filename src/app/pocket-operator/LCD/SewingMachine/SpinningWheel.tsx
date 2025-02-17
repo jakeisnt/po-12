@@ -1,5 +1,5 @@
-import { isBetween, oneOver16, oneOver8 } from "../../utils"
-import classes from "../lcd.module.scss"
+import { isBetween, oneOver16, oneOver8 } from "../../utils";
+import classes from "../lcd.module.scss";
 
 const SpinningWheel = ({ currentBeat }: { currentBeat: number }) => {
   return (
@@ -10,7 +10,8 @@ const SpinningWheel = ({ currentBeat }: { currentBeat: number }) => {
           isBetween(currentBeat % oneOver8, 0, oneOver16)
             ? classes.visible
             : classes.hidden
-        }>
+        }
+      >
         <path
           d="M68.0751 30L70.1672 32.1501L69.0921 33.1962L67 31.0461L68.0751 30Z"
           fill="currentColor"
@@ -39,7 +40,8 @@ const SpinningWheel = ({ currentBeat }: { currentBeat: number }) => {
           isBetween(currentBeat % oneOver8, oneOver16, oneOver8)
             ? classes.visible
             : classes.hidden
-        }>
+        }
+      >
         <path d="M72.5 29L72.5 32L71 32L71 29L72.5 29Z" fill="currentColor" />
         <path
           d="M65.551 33L68.3413 34.1021L67.7902 35.4972L65 34.3951L65.551 33Z"
@@ -59,7 +61,7 @@ const SpinningWheel = ({ currentBeat }: { currentBeat: number }) => {
         />
       </g>
     </>
-  )
-}
+  );
+};
 
-export default SpinningWheel
+export default SpinningWheel;

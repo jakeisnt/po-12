@@ -1,75 +1,139 @@
-"use client"
+import { useCallback, useEffect, useRef, useState } from "react";
 
-import { useCallback, useEffect, useState } from "react"
+import unmute from "./unmute";
+import * as Tone from "tone";
+import useSoundSourceURL from "./useSoundSourceURL";
+const allowBackgroundPlayback = false;
+const forceIOSBehavior = false;
 
-import Tone, { Sampler } from "tone"
-
-import unmute from "./unmute"
-
-const loadSampler = (soundSourceUrl: string, index: number): Promise<Sampler> =>
-  new Promise((resolve, reject) => {
+/**
+ * Loads a player
+ * @param soundSourceUrl - The URL of the sound source
+ * @param index - The index of the player
+ * @returns A promise that resolves to a player
+ */
+const loadPlayer = (
+  soundSourceUrl: string,
+  index: number
+): Promise<Tone.Player> =>
+  new Promise<Tone.Player>((resolve, reject) => {
     try {
-      let allowBackgroundPlayback = false // default false, recommended false
-      let forceIOSBehavior = false // default false, recommended false
-
-      const sampler = new Sampler(
-        {
-          C4: `${index}.wav`,
+      const player = new Tone.Player({
+        url: `${soundSourceUrl}${index}.wav`,
+        onload: () => {
+          const rawContext = player.context.rawContext;
+          if (rawContext) {
+            unmute(rawContext, allowBackgroundPlayback, forceIOSBehavior);
+          }
+          resolve(player);
         },
-        {
-          release: 1,
-          baseUrl: soundSourceUrl,
-          onload: () => {
-            resolve(sampler)
-            const rawContext = sampler.context.rawContext
-            if (rawContext) {
-              // If you need to be able to disable unmute at a later time, you can use the returned handle's dispose() method
-              // if you don't need to do that (most folks won't) then you can simply ignore the return value
-              unmute(rawContext, allowBackgroundPlayback, forceIOSBehavior)
-            }
-          },
-        },
-      ).toDestination()
-      resolve(sampler)
+      }).toDestination();
     } catch (error) {
-      reject(error)
+      reject(error);
     }
-  })
+  });
 
-const loadSamplers = (soundSourceUrl: string): Promise<Sampler[]> => {
-  const samplerPromises = Array.from({ length: 16 }, (_, i) =>
-    loadSampler(soundSourceUrl, i + 1),
-  )
-  return Promise.all(samplerPromises)
-}
+/**
+ * Loads all the players
+ * @param soundSourceUrl - The URL of the sound source
+ * @param playersRef - The ref to the players
+ * @returns A promise that resolves to an array of players
+ */
+const loadPlayers = (
+  soundSourceUrl: string,
+  playersRef: React.MutableRefObject<Map<number, Tone.Player>>,
+  prioritizeNotes?: number[]
+) => {
+  const indices = Array.from({ length: 16 }, (_, i) => i);
 
-/* Load a sampler and play a note */
-const useSampler = ({ soundSourceUrl, bpm }) => {
-  const [samplers, setSamplers] = useState<Sampler[]>()
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  if (prioritizeNotes?.length) {
+    // Move prioritized indices to front
+    prioritizeNotes.forEach((note) => {
+      const idx = indices.indexOf(note);
+      if (idx > -1) {
+        indices.splice(idx, 1);
+        indices.unshift(note);
+      }
+    });
+  }
+
+  const playerPromises = indices.map((i) =>
+    loadPlayer(soundSourceUrl, i + 1).then((player) => {
+      playersRef.current.set(i, player);
+    })
+  );
+
+  return Promise.all(playerPromises);
+};
+
+/**
+ * Load a player and play a note
+ * @param soundSourceUrl - The URL of the sound source
+ * @param bpm - The BPM of the player
+ * @returns An object containing the play function, loading state, and error state
+ */
+const useSampler = () => {
+  const soundSourceUrl = useSoundSourceURL();
+
+  const playersRef = useRef<Map<number, Tone.Player>>(new Map());
+  const [playersLoading, setPlayersLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  /**
+   * Loads the players into memory.
+   * @returns The players.
+   */
+  const loadPlayersIntoMemory = useCallback(
+    async ({ prioritizeNotes }: { prioritizeNotes?: number[] } = {}) => {
+      if (!playersRef.current.size && soundSourceUrl) {
+        try {
+          await loadPlayers(soundSourceUrl, playersRef, prioritizeNotes);
+          setPlayersLoading(false);
+        } catch (err) {
+          setError(err);
+          setPlayersLoading(false);
+        }
+      }
+      return playersRef.current;
+    },
+    [soundSourceUrl]
+  );
 
   useEffect(() => {
-    if (!samplers && soundSourceUrl) {
-      loadSamplers(soundSourceUrl)
-        .then((samplers) => setSamplers(samplers))
-        .catch((error) => setError(error))
-        .finally(() => setLoading(false))
-    }
-  }, [samplers, soundSourceUrl])
+    loadPlayersIntoMemory();
+  }, [loadPlayersIntoMemory]);
 
-  // 0 indexed
+  /**
+   * Plays a group of notes.
+   * @param notes - The notes to play.
+   */
   const play = useCallback(
-    (notes: number[]) => {
-      if (!samplers) return
+    async (notes: number[]) => {
+      // Only start audio context if not already started
+      if (Tone.context.state !== "running") {
+        await Tone.start();
+        await Tone.loaded();
+        Tone.context.lookAhead = 0;
+      }
+
+      if (!playersRef.current.size) {
+        console.info("[useSampler.play] No players loaded. Loading players...");
+      }
+
+      const now = Tone.now();
       notes.forEach((note) => {
-        samplers[note].triggerAttackRelease("C4", 0.01)
-      })
+        const player = playersRef.current.get(note);
+        if (player) {
+          player.start(now);
+        } else {
+          console.error("[useSampler.play] No player found for note", note);
+        }
+      });
     },
-    [samplers],
-  )
+    [loadPlayersIntoMemory]
+  );
 
-  return { play, loading, error }
-}
+  return { play, loading: playersLoading, error };
+};
 
-export default useSampler
+export default useSampler;

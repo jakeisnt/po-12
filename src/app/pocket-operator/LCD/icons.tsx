@@ -6,7 +6,8 @@ const SuccessIcon = ({ width = 19, height = 18, className }) => {
       className={className}
       viewBox="0 0 19 19"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect
         x="6.85733"
         y="16.6858"
@@ -24,8 +25,8 @@ const SuccessIcon = ({ width = 19, height = 18, className }) => {
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 
 const FailIcon = ({ width = 19, height = 19, className }) => {
   return (
@@ -36,7 +37,8 @@ const FailIcon = ({ width = 19, height = 19, className }) => {
       viewBox="0 0 19 19"
       style={{ marginLeft: "4px" }}
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <rect
         x="12.8995"
         y="15.7279"
@@ -54,8 +56,8 @@ const FailIcon = ({ width = 19, height = 19, className }) => {
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 
 const PlayingIcon = ({ width = 19, height = 19, className }) => {
   return (
@@ -65,14 +67,15 @@ const PlayingIcon = ({ width = 19, height = 19, className }) => {
       className={className}
       viewBox="0 0 19 19"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M15.0417 9.50001L3.76044 16.356L3.76044 2.64398L15.0417 9.50001Z"
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 
 const RecordingIcon = ({ width = 18, height = 18, className }) => {
   return (
@@ -82,7 +85,8 @@ const RecordingIcon = ({ width = 18, height = 18, className }) => {
       viewBox="0 0 20 20"
       fill="none"
       className={className}
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -90,7 +94,7 @@ const RecordingIcon = ({ width = 18, height = 18, className }) => {
         fill="currentColor"
       />
     </svg>
-  )
-}
+  );
+};
 
-export { SuccessIcon, FailIcon, PlayingIcon, RecordingIcon }
+export { SuccessIcon, FailIcon, PlayingIcon, RecordingIcon };

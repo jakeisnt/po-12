@@ -1,5 +1,5 @@
 import classes from "./lcd.module.scss";
-import { cn } from "../../lib/utils";
+import { cn } from "../../../../lib/utils";
 
 type BottomBeatIndicatorProps = {
   numBeats?: number;
@@ -18,7 +18,7 @@ const BottomBeatIndicator = ({
             classes.beat,
             Math.floor(currentBeat % 16) === beat
               ? classes.active
-              : classes.hidden
+              : classes.hidden,
           )}
           key={beat}
         />

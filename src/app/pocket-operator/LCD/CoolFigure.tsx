@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { AnimationState } from "../utils"
-import classes from "./lcd.module.scss"
+import type { AnimationState } from "../utils";
+import classes from "./lcd.module.scss";
 
 type CoolFigureProps = {
-  queuedSelectedPattern?: number | null
-  animationState: AnimationState
-}
+  queuedSelectedPattern?: number | null;
+  animationState: AnimationState;
+};
 
 const CoolFigure = ({
   queuedSelectedPattern: isSwitchingPatterns,
@@ -22,7 +22,7 @@ const CoolFigure = ({
     finishedHittingClap,
     hittingBell1,
     hittingBell2,
-  } = animationState
+  } = animationState;
 
   // the sounds playing change once per beat.
   // update the animation state based on the sounds playing.
@@ -33,7 +33,8 @@ const CoolFigure = ({
       height="78"
       viewBox="0 0 95 78"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       {/* top left mallet */}
       <g className={hittingHighHat ? classes.visible : classes.hidden}>
         <g
@@ -41,7 +42,8 @@ const CoolFigure = ({
             !isSwitchingPatterns && (finishedHittingClap || hittingHighHat)
               ? classes.visible
               : classes.hidden
-          }>
+          }
+        >
           <rect
             x="21.8363"
             y="44.0744"
@@ -78,13 +80,15 @@ const CoolFigure = ({
           !isSwitchingPatterns && finishedHittingDrum
             ? classes.visible
             : classes.hidden
-        }>
+        }
+      >
         <g
           className={
             !isSwitchingPatterns && (hittingClap || finishedHittingDrum)
               ? classes.visible
               : classes.hidden
-          }>
+          }
+        >
           <rect
             x="21.5"
             y="46.5"
@@ -119,13 +123,15 @@ const CoolFigure = ({
       <g
         className={
           !isSwitchingPatterns && hittingDrum ? classes.visible : classes.hidden
-        }>
+        }
+      >
         <g
           className={
             !isSwitchingPatterns && (finishedHittingClap || hittingDrum)
               ? classes.visible
               : classes.hidden
-          }>
+          }
+        >
           <rect
             x="14.7678"
             y="57.8552"
@@ -467,7 +473,8 @@ const CoolFigure = ({
       <g
         className={
           isSwitchingPatterns || hittingKick ? classes.hidden : classes.visible
-        }>
+        }
+      >
         <rect
           x="25.5"
           y="61.8434"
@@ -496,7 +503,8 @@ const CoolFigure = ({
             !isSwitchingPatterns && hittingBell1
               ? classes.visible
               : classes.hidden
-          }>
+          }
+        >
           <rect
             x="35.0711"
             y="37"
@@ -544,7 +552,8 @@ const CoolFigure = ({
             !isSwitchingPatterns && hittingBell2
               ? classes.visible
               : classes.hidden
-          }>
+          }
+        >
           <rect
             x="29"
             y="48.5"
@@ -571,7 +580,8 @@ const CoolFigure = ({
       <g
         className={
           !isSwitchingPatterns && hittingKick ? classes.visible : classes.hidden
-        }>
+        }
+      >
         <path
           d="M28.5398 55.7872C28.2484 55.1613 28.5196 54.4178 29.1455 54.1265L38.3965 49.8203L39.4515 52.0868L30.2005 56.3929C29.5746 56.6843 28.8311 56.4131 28.5398 55.7872Z"
           fill="currentColor"
@@ -669,7 +679,7 @@ const CoolFigure = ({
         <path d="M2.5 60H7.5L9 68H1L2.5 60Z" fill="currentColor" />
       </g>
     </svg>
-  )
-}
+  );
+};
 
-export default CoolFigure
+export default CoolFigure;

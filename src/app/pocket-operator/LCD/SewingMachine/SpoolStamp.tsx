@@ -1,5 +1,5 @@
-import classes from "../lcd.module.scss"
-import { isBetween } from "../../utils"
+import classes from "../lcd.module.scss";
+import { isBetween } from "../../utils";
 
 const SpoolStamp = ({
   currentBeat,
@@ -12,7 +12,8 @@ const SpoolStamp = ({
       <g
         className={
           isBetween(currentBeat % 2, 0, 1) ? classes.visible : classes.hidden
-        }>
+        }
+      >
         <rect x="24" y="60" width="4" height="1" fill="currentColor" />
         <rect x="25" y="58" width="1.5" height="2" fill="currentColor" />
       </g>
@@ -20,7 +21,8 @@ const SpoolStamp = ({
       <g
         className={
           isBetween(currentBeat % 2, 1, 2) ? classes.visible : classes.hidden
-        }>
+        }
+      >
         <rect x="24" y="64" width="4" height="1" fill="currentColor" />
         <rect x="25" y="62" width="1.5" height="2" fill="currentColor" />
       </g>
@@ -46,7 +48,7 @@ const SpoolStamp = ({
         />
       </g>
     </>
-  )
-}
+  );
+};
 
-export default SpoolStamp
+export default SpoolStamp;

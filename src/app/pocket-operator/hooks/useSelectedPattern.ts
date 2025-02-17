@@ -1,8 +1,11 @@
-import useLocalStorage from "../../lib/useLocalStorage";
+import { useLocalStorage } from "./useLocalStorage";
 import { useState, useEffect } from "react";
-import { Note, Pattern } from "./usePattern";
+import type { Pattern } from "../PocketOperator/types";
 import { flushSync } from "react-dom";
 
+/**
+ * Use the selected pattern stored on local storage.
+ */
 const useSelectedPattern = ({
   currentBeatIndex,
   patterns,
@@ -49,7 +52,7 @@ const useSelectedPattern = ({
     currentBeatIndex,
   ]);
 
-  const queueSelectedPatternExternal = (patternNumber) => {
+  const queueSelectedPatternExternal = (patternNumber: number) => {
     if (playing) {
       prequeueSelectedPattern(patternNumber);
     } else {
@@ -58,7 +61,7 @@ const useSelectedPattern = ({
       queueSelectedPattern(patternNumber);
       setSelectedPattern(patternNumber);
 
-      let queuedSpoolStateOffset = 60000 / bpm / 6;
+      const queuedSpoolStateOffset = 60000 / bpm / 6;
 
       const updateSpoolState = (n: 0 | 1 | 2 | 3) =>
         flushSync(() => setQueuedSpoolState(n));
@@ -76,7 +79,7 @@ const useSelectedPattern = ({
   };
 
   // the currently selected pattern
-  const currentPattern = patterns[selectedPattern - 1].notes;
+  const currentPattern = patterns[selectedPattern - 1];
 
   return {
     currentPattern,

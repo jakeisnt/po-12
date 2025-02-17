@@ -1,5 +1,3 @@
-"use client";
-
 import SoundTumblers from "./ABSoundTumblers";
 import PatternIndicators from "./PatternIndicators";
 
@@ -11,9 +9,9 @@ import CoolFigure from "./CoolFigure";
 
 import { SuccessIcon, FailIcon, PlayingIcon, RecordingIcon } from "./icons";
 import MetronomeAndMode from "./MetronomeAndMode";
-import { AnimationState } from "../utils";
+import type { AnimationState } from "../utils";
 import BottomBeatIndicator from "./BottomBeatIndicator";
-import { cn } from "../../lib/utils";
+import { cn } from "../../../../lib/utils";
 
 type LCDProps = {
   bpm: number;
@@ -34,6 +32,9 @@ type LCDProps = {
   spoolState?: number;
 };
 
+/**
+ * The LCD screen of the pocket operator.
+ */
 const LCD = ({
   bpm,
   setBPM,

@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "../lib/utils";
 import PocketOperator from "./PocketOperator";
 import classes from "./pocketOperatorPage.module.scss";
 import { useState, useEffect, useCallback, useMemo } from "react";
@@ -9,14 +8,13 @@ import useCurrentBeat from "./hooks/useCurrentBeat";
 
 import { MetronomeModes, getNextBPM, SelectingMode } from "./utils";
 import InstructionsPaper from "./InstructionsPaper/InstructionsPaper";
-import useIsTouchDevice from "../lib/useIsTouchDevice";
+import { useIsTouchDevice } from "./hooks/useIsTouchDevice";
 import ProductTour from "./ProductTour";
-import useLocalStorage from "../lib/useLocalStorage";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 import useSelectedPattern from "./hooks/useSelectedPattern";
 
 const defaultTilt = { x: 0, y: 0 };
 
-const tilt = defaultTilt;
 const onMouseMove = () => {};
 
 /**
@@ -151,11 +149,11 @@ const PocketOperatorWrapper = () => {
       </div>
 
       <div
-        className={cn(
+        className={
           onTouchDevice
             ? "absolute w-auto flex justify-center align-top"
             : "absolute left-10 top-10 w-10/100"
-        )}
+        }
         style={{
           transition: "top 0.2s ease",
           transitionDelay: "0.25s",

@@ -2,9 +2,21 @@ import { useState, useMemo, useEffect, useRef } from "react";
 
 import InstructionsCardButton from "./InstructionsCardButton";
 import classes from "./instructionsPaper.module.scss";
-import { cn } from "../../lib/utils";
+import { cn } from "../../../../lib/utils";
 
-const ProductTourIntro = ({ onClickNo, onClickYes, tilt: { x, y }, show }) => {
+type ProductTourIntroProps = {
+  onClickNo: () => void;
+  onClickYes: () => void;
+  tilt: { x: number; y: number };
+  show: boolean;
+};
+
+const ProductTourIntro = ({
+  onClickNo,
+  onClickYes,
+  tilt: { x, y },
+  show,
+}: ProductTourIntroProps) => {
   return (
     <div
       className={cn(

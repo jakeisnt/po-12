@@ -1,7 +1,17 @@
-import { ReactComponent as SCurve } from "./s-curve.svg"
-import { ReactComponent as Metronome } from "./metronome.svg"
-import { ReactComponent as Asterisk } from "./asterisk.svg"
-import { ReactComponent as Play } from "./play.svg"
-import { ReactComponent as Record } from "./record.svg"
-import GoodEnoughArrow from "./GoodEnoughArrow"
-export { SCurve, Metronome, Asterisk, Play, Record, GoodEnoughArrow }
+import SCurve from "./s-curve.svg?react";
+import Metronome from "./metronome.svg?react";
+import Asterisk from "./asterisk.svg?react";
+import Play from "./play.svg?react";
+import Record from "./record.svg?react";
+import GoodEnoughArrow from "./GoodEnoughArrow";
+import ThinMetronomeLeft from "./thin-metronome-left.svg?react";
+
+export {
+  SCurve,
+  Metronome,
+  Asterisk,
+  Play,
+  Record,
+  GoodEnoughArrow,
+  ThinMetronomeLeft,
+};

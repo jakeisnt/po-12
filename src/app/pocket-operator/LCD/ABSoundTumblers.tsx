@@ -1,9 +1,9 @@
-import classes from "./lcd.module.scss"
+import classes from "./lcd.module.scss";
 
 type SoundTumblersProps = {
-  tumblerALevel: number
-  tumblerBLevel: number
-}
+  tumblerALevel: number;
+  tumblerBLevel: number;
+};
 
 /**
  * Two tumblers on the right of the device.
@@ -21,7 +21,8 @@ const SoundTumblers = ({
         height="72"
         viewBox="0 0 50 72"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+      >
         {/* turn the tumbler A */}
         <g>
           <path
@@ -215,7 +216,7 @@ const SoundTumblers = ({
         </g>
       </svg>
     </div>
-  )
-}
+  );
+};
 
-export default SoundTumblers
+export default SoundTumblers;

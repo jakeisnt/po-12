@@ -1,58 +1,68 @@
-import { useRef, useState, useEffect, useCallback } from "react"
-import { flushSync } from "react-dom"
+import { useRef, useState, useEffect, useCallback, useMemo } from "react";
+import { flushSync } from "react-dom";
 
+/**
+ * Listen to the current beat of the pocket operator.
+ */
 const useCurrentBeat = (bpm: number) => {
-  const [currentBeat, setCurrentBeat] = useState(0)
-  const [playing, setPlaying] = useState(false)
-  const intervalRef = useRef<any>()
+  const [currentBeat, setCurrentBeat] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval>>(null);
 
+  /**
+   * Start the pocket operator's continuous playback.
+   */
   const startPlaying = useCallback((bpm: number) => {
-    intervalRef.current = setInterval(
-      () => {
-        flushSync(() => setCurrentBeat((currentBeat) => currentBeat + 0.0625))
-      },
-      60000 / 4 / 16 / bpm,
-    )
+    intervalRef.current = setInterval(() => {
+      flushSync(() => setCurrentBeat((currentBeat) => currentBeat + 0.0625));
+    }, 60000 / 4 / 16 / bpm);
 
-    setPlaying(true)
-  }, [])
+    setPlaying(true);
+  }, []);
 
-  // when the bpm changs, start a new interval with the new bpm
+  /**
+   * When the bpm changes, start a new interval with the new bpm.
+   */
   useEffect(() => {
     if (!intervalRef.current) {
-      return
+      return;
     }
 
-    clearInterval(intervalRef.current)
-    startPlaying(bpm)
+    clearInterval(intervalRef.current);
+    startPlaying(bpm);
+  }, [bpm]);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bpm])
-
-  // when we start playing, we want to start the interval if it doesn't already exist.
+  /**
+   * Start the pocket operator's continuous playback.
+   */
   const play = useCallback(() => {
     if (intervalRef.current) {
-      return
+      return;
     }
 
-    startPlaying(bpm)
-  }, [bpm, startPlaying])
+    startPlaying(bpm);
+  }, [bpm, startPlaying]);
 
-  // when we pause, we want to clear the interval if it exists completely.
+  /**
+   * Pause the pocket operator's continuous playback.
+   */
   const pause = useCallback(() => {
     if (!intervalRef.current) {
-      return
+      return;
     }
 
-    clearInterval(intervalRef.current)
-    intervalRef.current = undefined
-    setCurrentBeat(0)
-    setPlaying(false)
-  }, [])
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+    setCurrentBeat(0);
+    setPlaying(false);
+  }, []);
 
-  const togglePlaying = playing ? pause : play
+  /**
+   * Toggle the playing state of the pocket operator.
+   */
+  const togglePlaying = useMemo(() => (playing ? pause : play), [playing]);
 
-  return { currentBeat, playing, togglePlaying, pause }
-}
+  return { currentBeat, playing, togglePlaying, pause };
+};
 
-export default useCurrentBeat
+export default useCurrentBeat;

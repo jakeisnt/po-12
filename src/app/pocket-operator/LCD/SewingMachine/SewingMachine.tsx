@@ -1,18 +1,28 @@
-import SpoolIndicator from "./SpoolIndicator"
-import SpoolFeeder from "./SpoolFeeder"
-import SpoolStamp from "./SpoolStamp"
-import SpoolList from "./SpoolList"
-import SpinningWheel from "./SpinningWheel"
+import SpoolIndicator from "./SpoolIndicator";
+import SpoolFeeder from "./SpoolFeeder";
+import SpoolStamp from "./SpoolStamp";
+import SpoolList from "./SpoolList";
+import SpinningWheel from "./SpinningWheel";
 
-const lightningLeftEnabled = false
-const lightningRightEnabled = false
+const lightningLeftEnabled = false;
+const lightningRightEnabled = false;
 
+type SewingMachineProps = {
+  playing: boolean;
+  currentBeat: number;
+  queuedSelectedPattern: number | null;
+  spoolState?: number;
+};
+
+/**
+ * The sewing machine on the pocket operator.
+ */
 const SewingMachine = ({
   playing,
   currentBeat,
   queuedSelectedPattern,
   spoolState,
-}) => {
+}: SewingMachineProps) => {
   return (
     <div>
       <svg
@@ -20,7 +30,8 @@ const SewingMachine = ({
         height="92"
         viewBox="0 0 113 92"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <SpoolIndicator currentBeat={currentBeat} />
         <SpoolFeeder playing={playing} currentBeat={currentBeat} />
 
@@ -76,7 +87,7 @@ const SewingMachine = ({
         </g>
       </svg>
     </div>
-  )
-}
+  );
+};
 
-export default SewingMachine
+export default SewingMachine;
