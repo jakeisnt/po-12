@@ -49,11 +49,11 @@ const pattern1 = {
 /**
  * Is a string valid JSON?
  */
-const isValidJSON = (v: any) => {
+const isValidJSON = (v: string) => {
   try {
     JSON.parse(v);
     return true;
-  } catch (e) {
+  } catch {
     return false;
   }
 };
@@ -63,13 +63,14 @@ const isValidJSON = (v: any) => {
  *
  * A valid note is an object with a note property that is a number between 1-16.
  */
-const isValidNote = (note: any): note is Note => {
+const isValidNote = (note: unknown): note is Note => {
   return (
+    note !== null &&
     typeof note === "object" &&
-    note?.note &&
-    typeof note.note === "number" &&
-    note.note >= 1 &&
-    note.note <= 16
+    "note" in note &&
+    typeof (note as { note: number }).note === "number" &&
+    (note as { note: number }).note >= 1 &&
+    (note as { note: number }).note <= 16
   );
 };
 
@@ -78,10 +79,12 @@ const isValidNote = (note: any): note is Note => {
  *
  * A valid pattern is an object with a notes property that is an array of 16 places.
  */
-const isValidPattern = (pattern: any): pattern is Pattern[] => {
-  if (!(typeof pattern === "object")) return false;
-  if (pattern?.notes?.length !== 16) return false;
-  return pattern.notes.every((place: any) => {
+const isValidPattern = (pattern: unknown): pattern is Pattern => {
+  if (!pattern || typeof pattern !== "object") return false;
+  const patternObj = pattern as { notes?: unknown[] };
+  if (!Array.isArray(patternObj.notes) || patternObj.notes.length !== 16)
+    return false;
+  return patternObj.notes.every((place: unknown) => {
     if (!Array.isArray(place)) return false;
     return place.every(isValidNote);
   });
@@ -93,7 +96,7 @@ const isValidPattern = (pattern: any): pattern is Pattern[] => {
  * A valid pattern set is an array of 16 patterns, each with 16 places.
  * Each place is an array of notes.
  */
-const isValidPatternSet = (v: any): v is Pattern[] => {
+const isValidPatternSet = (v: unknown): v is Pattern[] => {
   if (!Array.isArray(v)) return false;
   if (v.length !== 16) return false;
   return v.every(isValidPattern);
@@ -148,7 +151,7 @@ const usePatterns = () => {
         return newPatterns;
       });
     },
-    []
+    [setPatterns]
   );
 
   /**

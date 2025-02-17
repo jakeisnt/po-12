@@ -74,9 +74,9 @@ const FixedMagnifyingGlass = ({ classNameToTarget, onClick }) => {
 
   const [width, setWidth] = useState(radius);
   const [height, setHeight] = useState(radius);
-  const [borderRadiusConfig, setBorderRadiusConfig] = useState<any>(
-    defaultBorderRadiusConfig
-  );
+  const [borderRadiusConfig, setBorderRadiusConfig] = useState<{
+    borderRadius: string;
+  }>(defaultBorderRadiusConfig);
 
   const [glassCircle, setGlassCircle] = useState<HTMLDivElement | null>(null);
 
