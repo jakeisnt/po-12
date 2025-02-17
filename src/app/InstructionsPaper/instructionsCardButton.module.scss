@@ -1,0 +1,26 @@
+.instructionsCardButton {
+  border: 1px solid black;
+  opacity: 0.6;
+  padding: 4px;
+  border-radius: 3px;
+  max-height: 18px;
+  margin: 0;
+  font-size: 12px;
+  border-color: black;
+  min-width: 40px;
+  display: block;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+
+  &:disabled {
+    display: none;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+  }
+}
+
+.buttonChildren {
+  margin-top: -3px;
+}

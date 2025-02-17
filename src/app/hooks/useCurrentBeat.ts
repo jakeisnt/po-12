@@ -7,7 +7,7 @@ import { flushSync } from "react-dom";
 const useCurrentBeat = (bpm: number) => {
   const [currentBeat, setCurrentBeat] = useState(0);
   const [playing, setPlaying] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval>>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   /**
    * Start the pocket operator's continuous playback.

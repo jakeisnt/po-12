@@ -67,7 +67,6 @@ $cardBorderRadius: 1px;
   }
 }
 
-
 .box1 {
   @extend .box;
   @extend .cardBoxShadow;
@@ -83,6 +82,7 @@ $cardBorderRadius: 1px;
   align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
+  pointer-events: all;
 }
 
 .box2 {
@@ -136,6 +136,62 @@ $cardBorderRadius: 1px;
   transform: rotateX(-180deg);
   transform-origin: 0 0;
   transition-delay: 0s;
+
+  font-size: 10px;
+  line-height: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4px;
+
+  &>div {
+    width: 100%;
+    font-size: 8px;
+    line-height: 0.5rem;
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+}
+
+.noteMenuList {
+  font-size: 13px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  >li {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.instructionsPaperList {
+  font-size: 13px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  >li {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .instructionsPaperKeymap {
@@ -213,4 +269,28 @@ $cardBorderRadius: 1px;
 
 .firstIntroCardBoxShown {
   transform: translate(-50%, -50%) rotateX(0deg);
+}
+
+.instructionsPaperLink {
+  color: rgb(107, 114, 128); // text-gray-500
+  text-decoration: none;
+
+  &:hover {
+    color: rgb(156, 163, 175); // text-gray-400
+  }
+}
+
+.instructionsCardButtonBlock {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.instructionsPaperKeymapContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
 }

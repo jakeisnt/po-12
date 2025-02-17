@@ -73,7 +73,6 @@ const InstructionsPaper = ({
     >
       <div
         className={cn(classes.box, classes.box1)}
-        style={{ pointerEvents: "all" }}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -93,7 +92,7 @@ const InstructionsPaper = ({
         </div>
       </div>
       <div className={cn(classes.box, classes.box2)}>
-        <ul style={{ fontSize: "13px", width: "100%" }}>
+        <ul className={classes.noteMenuList}>
           <li>
             [<OneButtonIcon /> - <SixteenButtonIcon />
             ]: play note
@@ -121,23 +120,8 @@ const InstructionsPaper = ({
         </ul>
       </div>
       <div className={cn(classes.box, classes.box3)}>
-        <ul
-          style={{
-            fontSize: "13px",
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "between",
-            alignItems: "start",
-          }}
-        >
-          <li
-            style={{
-              display: "flex",
-              justifyContent: "between",
-              width: "100%",
-            }}
-          >
+        <ul className={classes.instructionsPaperList}>
+          <li>
             <div>{"] import"}</div> <div>{"export [→"}</div>
           </li>
         </ul>
@@ -209,40 +193,13 @@ const InstructionsPaper = ({
           </div>
         </div>
       </div>
-      <div
-        className={cn(classes.box, classes.box4)}
-        style={{
-          fontSize: "10px",
-          lineHeight: "0.8rem",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "between",
-          alignItems: "start",
-          gap: "4px",
-        }}
-      >
-        <div
-          style={{
-            width: "100%",
-            fontSize: "8px",
-            lineHeight: "0.5rem",
-            paddingLeft: "10px",
-            paddingTop: "10px",
-          }}
-        >
+      <div className={cn(classes.box, classes.box4)}>
+        <div>
           This is an unlicensed partial reimplementation of a hardware device.
           All design credit goes to Teenage Engineering.
         </div>
 
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "between",
-            alignItems: "end",
-          }}
-        >
+        <div className={classes.instructionsPaperKeymapContainer}>
           <div className={classes.instructionsPaperKeymap}>
             <div className={classes.instructionsPaperRow}>
               <PlayIcon />
@@ -253,14 +210,7 @@ const InstructionsPaper = ({
           <a
             href="https://teenage.engineering/store/po-12"
             target="_blank"
-            // className="text-gray-500 hover:text-gray-400"
-            style={{
-              color: "rgba(0, 0, 0, 0.75)",
-              textDecoration: "none",
-              "&:hover": {
-                color: "rgba(0, 0, 0, 0.5)",
-              },
-            }}
+            className={classes.instructionsPaperLink}
           >
             link: buy original
           </a>
@@ -268,14 +218,7 @@ const InstructionsPaper = ({
           <a
             href="https://teenage.engineering/guides/po-12/en"
             target="_blank"
-            // className="text-gray-500 hover:text-gray-400"
-            style={{
-              color: "rgba(0, 0, 0, 0.75)",
-              textDecoration: "none",
-              "&:hover": {
-                color: "rgba(0, 0, 0, 0.5)",
-              },
-            }}
+            className={classes.instructionsPaperLink}
           >
             link: full manual
           </a>
@@ -285,25 +228,12 @@ const InstructionsPaper = ({
             <a
               href="https://twitter.com/@jakeissnt"
               target="_blank"
-              style={{
-                color: "rgba(0, 0, 0, 0.75)",
-                textDecoration: "none",
-                "&:hover": {
-                  color: "rgba(0, 0, 0, 0.5)",
-                },
-              }}
+              className={classes.instructionsPaperLink}
             >
               @jakeissnt
             </a>{" "}
           </span>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "between",
-              alignItems: "baseline",
-            }}
-          >
+          <div className={classes.instructionsCardButtonBlock}>
             <InstructionsCardButton
               onClick={() => {
                 setOpen(false);
