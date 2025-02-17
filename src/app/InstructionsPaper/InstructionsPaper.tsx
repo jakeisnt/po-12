@@ -122,16 +122,33 @@ const InstructionsPaper = ({
       </div>
       <div className={cn(classes.box, classes.box3)}>
         <ul
-          style={{ fontSize: "13px", width: "100%" }}
-          className="flex flex-col justify-between items-start"
+          style={{
+            fontSize: "13px",
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "between",
+            alignItems: "start",
+          }}
         >
-          <li className="flex justify-between w-full">
+          <li
+            style={{
+              display: "flex",
+              justifyContent: "between",
+              width: "100%",
+            }}
+          >
             <div>{"] import"}</div> <div>{"export [→"}</div>
           </li>
         </ul>
         <div
-          className="flex justify-between w-full align-top"
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "between",
+            alignItems: "start",
+          }}
         >
           <div className={classes.instructionsPaperKeymap}>
             <div className={classes.instructionsPaperRow}>
@@ -193,19 +210,20 @@ const InstructionsPaper = ({
         </div>
       </div>
       <div
-        className={cn(
-          classes.box,
-          classes.box4,
-          "flex flex-col items-start justify-between gap-1 text-xs"
-        )}
+        className={cn(classes.box, classes.box4)}
         style={{
           fontSize: "10px",
           lineHeight: "0.8rem",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "between",
+          alignItems: "start",
+          gap: "4px",
         }}
       >
         <div
-          className="w-full"
           style={{
+            width: "100%",
             fontSize: "8px",
             lineHeight: "0.5rem",
             paddingLeft: "10px",
@@ -216,7 +234,15 @@ const InstructionsPaper = ({
           All design credit goes to Teenage Engineering.
         </div>
 
-        <div className="flex flex-col items-end justify-between gap-1 w-full">
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "between",
+            alignItems: "end",
+          }}
+        >
           <div className={classes.instructionsPaperKeymap}>
             <div className={classes.instructionsPaperRow}>
               <PlayIcon />
@@ -227,7 +253,14 @@ const InstructionsPaper = ({
           <a
             href="https://teenage.engineering/store/po-12"
             target="_blank"
-            className="text-gray-500 hover:text-gray-400"
+            // className="text-gray-500 hover:text-gray-400"
+            style={{
+              color: "rgba(0, 0, 0, 0.75)",
+              textDecoration: "none",
+              "&:hover": {
+                color: "rgba(0, 0, 0, 0.5)",
+              },
+            }}
           >
             link: buy original
           </a>
@@ -235,7 +268,14 @@ const InstructionsPaper = ({
           <a
             href="https://teenage.engineering/guides/po-12/en"
             target="_blank"
-            className="text-gray-500 hover:text-gray-400"
+            // className="text-gray-500 hover:text-gray-400"
+            style={{
+              color: "rgba(0, 0, 0, 0.75)",
+              textDecoration: "none",
+              "&:hover": {
+                color: "rgba(0, 0, 0, 0.5)",
+              },
+            }}
           >
             link: full manual
           </a>
@@ -243,14 +283,27 @@ const InstructionsPaper = ({
           <span>
             by{" "}
             <a
-              className=" text-gray-500 hover:text-gray-400"
               href="https://twitter.com/@jakeissnt"
               target="_blank"
+              style={{
+                color: "rgba(0, 0, 0, 0.75)",
+                textDecoration: "none",
+                "&:hover": {
+                  color: "rgba(0, 0, 0, 0.5)",
+                },
+              }}
             >
               @jakeissnt
             </a>{" "}
           </span>
-          <div className="flex justify-between align-baseline w-full">
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "between",
+              alignItems: "baseline",
+            }}
+          >
             <InstructionsCardButton
               onClick={() => {
                 setOpen(false);

@@ -149,15 +149,22 @@ const PocketOperatorWrapper = () => {
       </div>
 
       <div
-        className={
-          onTouchDevice
-            ? "absolute w-auto flex justify-center align-top"
-            : "absolute left-10 top-10 w-10/100"
-        }
         style={{
+          position: "absolute",
+          width: "auto",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "top",
           transition: "top 0.2s ease",
           transitionDelay: "0.25s",
           top: showInstructionsPaper ? "26px" : "-130px",
+          ...(onTouchDevice
+            ? {}
+            : {
+                left: "2.5rem",
+                top: "2.5rem",
+                width: "10%",
+              }),
         }}
         onClick={(e) => {
           e.stopPropagation();

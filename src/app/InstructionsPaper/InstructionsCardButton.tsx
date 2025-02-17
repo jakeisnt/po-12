@@ -16,10 +16,10 @@ const InstructionsCardButton = ({
 }: InstructionsCardButtonProps) => {
   return (
     <button
-      className={`border opacity-60 px-1 text-sm shadow hover:shadow-md hover:opacity-100 ${
-        disabled ? "hidden" : "block"
-      }`}
       style={{
+        border: "1px solid black",
+        opacity: 0.6,
+        padding: "4px",
         borderRadius: "3px",
         maxHeight: "18px",
         verticalAlign: "text-bottom",
@@ -27,6 +27,12 @@ const InstructionsCardButton = ({
         fontSize: "12px",
         borderColor: "black",
         minWidth: "40px",
+        display: disabled ? "none" : "block",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.12)",
+        "&:hover": {
+          boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+          opacity: 1,
+        },
       }}
       onClick={(e) => {
         e.preventDefault();

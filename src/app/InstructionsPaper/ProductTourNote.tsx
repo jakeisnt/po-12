@@ -128,7 +128,14 @@ const ProductTourNote = ({
       }}
     >
       <div>{wordsDisplayed}</div>
-      <div className="flex justify-start w-full gap-8">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "start",
+          width: "100%",
+          gap: "8px",
+        }}
+      >
         <InstructionsCardButton onClick={onClose}>
           skip tour
         </InstructionsCardButton>
