@@ -2,47 +2,32 @@
   "name": "po-12",
   "version": "0.1.0",
   "description": "A simple drum machine",
-  "main": "dist/index.js",
-  "files": ["dist"],
   "license": "MIT",
   "author": "jakeisnt",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    }
-  },
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build-package": "webpack --config webpack.config.js"
+    "build-package": "next build"
   },
   "dependencies": {
     "react": "^18",
     "react-dom": "^18",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.363.0",
     "tone": "^15.0.4"
   },
   "devDependencies": {
-    "tailwind-merge": "^2.6.0",
-    "@next/bundle-analyzer": "^15.1.7",
-    "next": "^15.1.7",
-    "@svgr/webpack": "^8.1.0",
     "@ducanh2912/next-pwa": "^10.2.9",
+    "@next/bundle-analyzer": "^15.1.7",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.17.19",
-    "sass": "^1.85.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
-    "css-loader": "^6.11.0",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.1.4",
-    "file-loader": "^6.2.0",
-    "sass-loader": "^14.2.1",
-    "tailwindcss": "^3.4.17",
+    "eslint": "^9.20.1",
+    "eslint-config-next": "^15.1.7",
+    "next": "^15.1.7",
+    "sass": "^1.85.0",
     "typescript": "^5.7.3"
   },
   "trustedDependencies": [

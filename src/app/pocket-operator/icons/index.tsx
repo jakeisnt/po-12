@@ -1,10 +1,11 @@
-import SCurve from "./s-curve.svg?react";
-import Metronome from "./metronome.svg?react";
-import Asterisk from "./asterisk.svg?react";
-import Play from "./play.svg?react";
-import Record from "./record.svg?react";
+import SCurve from "./s-curve.svg";
+import Metronome from "./metronome.svg";
+import Asterisk from "./asterisk.svg";
+import Play from "./play.svg";
+import Record from "./record.svg";
 import GoodEnoughArrow from "./GoodEnoughArrow";
-import ThinMetronomeLeft from "./thin-metronome-left.svg?react";
+import ThinMetronomeLeft from "./thin-metronome-left.svg";
+import Grip from "./grip.svg";
 
 export {
   SCurve,
@@ -14,4 +15,5 @@ export {
   Record,
   GoodEnoughArrow,
   ThinMetronomeLeft,
+  Grip,
 };
