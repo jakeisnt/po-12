@@ -26,7 +26,7 @@ const MetronomeAndMode = ({
         <ThinMetronomeLeft />
       </div>
       <div className={classes.modes}>
-        {modes.map((mode, idx) => (
+        {modes.map((mode) => (
           <div
             className={cn(
               classes.mode,

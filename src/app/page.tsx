@@ -98,9 +98,13 @@ const openSans = Open_Sans({
 
 const NextPOPage = () => {
   return (
-    <main className={openSans.className}>
-      <PocketOperatorPage />
-    </main>
+    <html lang="en">
+      <body>
+        <main className={openSans.className}>
+          <PocketOperatorPage />
+        </main>
+      </body>
+    </html>
   );
 };
 

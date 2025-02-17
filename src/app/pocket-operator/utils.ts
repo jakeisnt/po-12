@@ -6,7 +6,7 @@ enum MetronomeModes {
   TECHNO = 140,
 }
 
-// names of the different modes
+// Names of the different modes
 enum MetronomeModeNames {
   HIP_HOP = "HIP-HOP",
   DISCO = "DISCO",
@@ -33,7 +33,7 @@ const modeToBPM = (
   mode:
     | MetronomeModeNames.HIP_HOP
     | MetronomeModeNames.DISCO
-    | MetronomeModeNames.TECHNO,
+    | MetronomeModeNames.TECHNO
 ) => {
   if (mode === MetronomeModeNames.HIP_HOP) {
     return MetronomeModes.HIP_HOP;
@@ -140,7 +140,7 @@ const fixBetween = (min: number, max: number, val: number) => {
 const findElementAtCursor = (event: MouseEvent, className: string) => {
   let targetElement: HTMLElement | null = document.elementFromPoint(
     event.clientX,
-    event.clientY,
+    event.clientY
   ) as HTMLElement;
   while (targetElement && !targetElement.classList.contains(className)) {
     targetElement = targetElement.parentElement;

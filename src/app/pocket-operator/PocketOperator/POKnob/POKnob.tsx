@@ -2,7 +2,7 @@ import classes from "./knob.module.scss";
 import { cn } from "@/lib/utils";
 import { type Dispatch, type SetStateAction, useState } from "react";
 
-type POKnob = {
+type POKnobProps = {
   level: number;
   setLevel: Dispatch<SetStateAction<number>>;
   minLevel?: number;
@@ -30,15 +30,18 @@ const POKnob = ({
   knobStartAngle = 90,
   knobEndAngle = 270,
   className,
-}: POKnob) => {
+}: POKnobProps) => {
   const [isActivelyRotating, setIsActivelyRotating] = useState(false);
 
   const rotation = (level / maxLevel) * knobEndAngle + knobStartAngle;
 
+  /**
+   * Set the rotation of the knob.
+   * @param rotation - The rotation of the knob.
+   */
   const setRotation = (rotation: number) => {
     const level = ((rotation - knobStartAngle) / knobEndAngle) * maxLevel;
 
-    // setLevel(Math.max(Math.min(level, maxLevel), minLevel))
     setLevel((prevLevel: number) => {
       // if we cross over a whole number (level), send a slight 'ticking' vibration
       // if (Math.floor(level) !== Math.floor(prevLevel)) {

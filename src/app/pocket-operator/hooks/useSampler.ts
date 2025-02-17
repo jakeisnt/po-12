@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-
+import type { MutableRefObject } from "react";
 import unmute from "./unmute";
 import * as Tone from "tone";
 import useSoundSourceURL from "./useSoundSourceURL";
@@ -41,7 +41,7 @@ const loadPlayer = (
  */
 const loadPlayers = (
   soundSourceUrl: string,
-  playersRef: React.MutableRefObject<Map<number, Tone.Player>>,
+  playersRef: MutableRefObject<Map<number, Tone.Player>>,
   prioritizeNotes?: number[]
 ) => {
   const indices = Array.from({ length: 16 }, (_, i) => i);
@@ -107,31 +107,28 @@ const useSampler = () => {
    * Plays a group of notes.
    * @param notes - The notes to play.
    */
-  const play = useCallback(
-    async (notes: number[]) => {
-      // Only start audio context if not already started
-      if (Tone.context.state !== "running") {
-        await Tone.start();
-        await Tone.loaded();
-        Tone.context.lookAhead = 0;
-      }
+  const play = useCallback(async (notes: number[]) => {
+    // Only start audio context if not already started
+    if (Tone.context.state !== "running") {
+      await Tone.start();
+      await Tone.loaded();
+      Tone.context.lookAhead = 0;
+    }
 
-      if (!playersRef.current.size) {
-        console.info("[useSampler.play] No players loaded. Loading players...");
-      }
+    if (!playersRef.current.size) {
+      console.info("[useSampler.play] No players loaded. Loading players...");
+    }
 
-      const now = Tone.now();
-      notes.forEach((note) => {
-        const player = playersRef.current.get(note);
-        if (player) {
-          player.start(now);
-        } else {
-          console.error("[useSampler.play] No player found for note", note);
-        }
-      });
-    },
-    [loadPlayersIntoMemory]
-  );
+    const now = Tone.now();
+    notes.forEach((note) => {
+      const player = playersRef.current.get(note);
+      if (player) {
+        player.start(now);
+      } else {
+        console.error("[useSampler.play] No player found for note", note);
+      }
+    });
+  }, []);
 
   return { play, loading: playersLoading, error };
 };

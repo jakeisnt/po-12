@@ -35,12 +35,6 @@ const ProductTourContents = ({ onFinish, tilt, restartTour }) => {
 
   const REVERSED_TOUR_STEPS = useMemo(() => TOUR_STEPS.toReversed(), []);
 
-  // the current step of the product tour that we're on.
-  const currentStep = getStepSoFar(
-    TOUR_STEPS[currentStepIndex],
-    currentSubStepIndex,
-  );
-
   /**
    * Show the next step of the product tour.
    */
@@ -80,7 +74,7 @@ const ProductTourContents = ({ onFinish, tilt, restartTour }) => {
         const i = REVERSED_TOUR_STEPS.length - 1 - reverseI;
         const currentStep = getStepSoFar(
           currentStepThing,
-          currentStepIndex === i ? currentSubStepIndex : 0,
+          currentStepIndex === i ? currentSubStepIndex : 0
         );
 
         return (

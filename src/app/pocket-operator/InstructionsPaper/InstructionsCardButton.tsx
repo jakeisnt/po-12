@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 type InstructionsCardButtonProps = {
   onClick: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
   disabled?: boolean;
 };
 

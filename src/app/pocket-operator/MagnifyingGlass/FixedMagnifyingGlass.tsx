@@ -8,7 +8,7 @@ const withinBbox = (
     right: number;
     top: number;
     bottom: number;
-  },
+  }
 ) => {
   return (
     event.clientX >= bbox.left &&
@@ -23,7 +23,7 @@ const withinBbox = (
  * @param elem  the element to get the config from
  * @param borderRadiusOffset the offset from the element to introduce if needed
  */
-const getBorderRadiusConfig = (elem, borderRadiusOffset) => {
+const getBorderRadiusConfig = (elem: Element, borderRadiusOffset: number) => {
   const style = window.getComputedStyle(elem);
 
   const currentBorderRadius = Number.parseInt(style.borderRadius, 10);
@@ -31,11 +31,11 @@ const getBorderRadiusConfig = (elem, borderRadiusOffset) => {
   const borderTopRightRadius = Number.parseInt(style.borderTopRightRadius, 10);
   const borderBottomLeftRadius = Number.parseInt(
     style.borderBottomLeftRadius,
-    10,
+    10
   );
   const borderBottomRightRadius = Number.parseInt(
     style.borderBottomRightRadius,
-    10,
+    10
   );
   return {
     borderRadius: `${currentBorderRadius + borderRadiusOffset}px`,
@@ -75,7 +75,7 @@ const FixedMagnifyingGlass = ({ classNameToTarget, onClick }) => {
   const [width, setWidth] = useState(radius);
   const [height, setHeight] = useState(radius);
   const [borderRadiusConfig, setBorderRadiusConfig] = useState<any>(
-    defaultBorderRadiusConfig,
+    defaultBorderRadiusConfig
   );
 
   const [glassCircle, setGlassCircle] = useState<HTMLDivElement | null>(null);
@@ -110,7 +110,7 @@ const FixedMagnifyingGlass = ({ classNameToTarget, onClick }) => {
     setHeight(nextHeight);
 
     setBorderRadiusConfig(
-      getBorderRadiusConfig(targetedElement, borderRadiusOffset),
+      getBorderRadiusConfig(targetedElement, borderRadiusOffset)
     );
 
     // allow for the position to update when the window resizes

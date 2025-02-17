@@ -1,5 +1,5 @@
 import { useState, useCallback, useLayoutEffect } from "react";
-import type { Dispatch, SetStateAction } from "react";
+import type { SetStateAction } from "react";
 import type { AnimationState } from "../utils";
 import { flushSync } from "react-dom";
 
@@ -233,7 +233,7 @@ const useDeviceAnimations = ({
     }, 1);
     // do not trigger sounds when the bpm changes.
     // only trigger sound animations when the soundsPlaying array changes.
-    // eslint-disable-next-line react-_hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [soundsPlaying, interpretSounds]);
 
   // start an animation when a sound is pressed.

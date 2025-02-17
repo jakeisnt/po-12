@@ -20,7 +20,7 @@ const useLocalStorage = <T>(
     }
 
     // the key should never change
-    // eslint-disable-next-line react-_hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const setValue = useCallback(
@@ -34,7 +34,7 @@ const useLocalStorage = <T>(
       });
     },
     // the key should never change
-    // eslint-disable-next-line react-_hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
