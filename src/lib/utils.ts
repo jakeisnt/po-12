@@ -5,7 +5,7 @@ type ClassValue =
   | undefined
   | null
   | ClassValue[]
-  | Record<string, any>;
+  | Record<string, unknown>;
 
 /**
  * Merge class names

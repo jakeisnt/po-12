@@ -95,12 +95,18 @@ const Button = ({
           e.currentTarget.releasePointerCapture(e.pointerId);
         }}
         onMouseEnter={(e) => {
-          !disabledBecause &&
-            e.currentTarget.classList.add(classes.userTriggeredHoverButton);
+          if (disabledBecause) {
+            return;
+          }
+
+          e.currentTarget.classList.add(classes.userTriggeredHoverButton);
         }}
         onMouseLeave={(e) => {
-          !disabledBecause &&
-            e.currentTarget.classList.remove(classes.userTriggeredHoverButton);
+          if (disabledBecause) {
+            return;
+          }
+
+          e.currentTarget.classList.remove(classes.userTriggeredHoverButton);
         }}
         onPointerUp={(e) => {
           if (disabledBecause) {

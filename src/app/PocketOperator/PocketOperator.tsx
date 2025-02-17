@@ -20,10 +20,11 @@ import {
   Play,
   Record,
   GoodEnoughArrow,
+  Grip,
 } from "../icons";
 
 import POKnob from "./POKnob";
-import { Grip } from "lucide-react";
+
 import useKeyInteractions from "../hooks/useKeyInteractions";
 
 // 4x4 grid of buttons numbered 1-16
@@ -162,6 +163,7 @@ const PocketOperator = ({
       }
     },
     [
+      setSelectedSound,
       queueSelectedPattern,
       setSelectingMode,
       triggerAnimation,

@@ -42,7 +42,7 @@ const POKnob = ({
   const setRotation = (rotation: number) => {
     const level = ((rotation - knobStartAngle) / knobEndAngle) * maxLevel;
 
-    setLevel((prevLevel: number) => {
+    setLevel(() => {
       // if we cross over a whole number (level), send a slight 'ticking' vibration
       // if (Math.floor(level) !== Math.floor(prevLevel)) {
       //   typeof navigator !== "undefined" && navigator?.vibrate?.(50);

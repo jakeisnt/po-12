@@ -101,14 +101,13 @@ const ProductTourNote = ({
 
     const curTimeout = queueLetter();
     return () => clearTimeout(curTimeout);
-  }, [isCurrentStep]);
+  }, [isCurrentStep, highlightNextButton]);
 
   useEffect(() => {
     const { text, classNameToClick } = step;
     const newText = text.replace(wordsSeenSoFar.current, "").split("");
-    queuedLetters.current.push.apply(
-      queuedLetters.current,
-      newText.map((char) => ({
+    queuedLetters.current.push(
+      ...newText.map((char) => ({
         char,
         classNameToClick,
       }))

@@ -9,8 +9,8 @@ const importPatternFile = () => {
     fileInput.type = "file";
     fileInput.accept = "application/json";
 
-    fileInput.onchange = (event: any) => {
-      const file = event?.target?.files?.[0];
+    fileInput.onchange = (event: Event) => {
+      const file = (event.target as HTMLInputElement).files?.[0];
       if (!file) return;
       resolve(file);
     };
