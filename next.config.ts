@@ -18,11 +18,6 @@ const withPWA = require("@ducanh2912/next-pwa").default({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // uncomment the following snippet if using styled components
-  // compiler: {
-  //   styledComponents: true,
-  // },
-  reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   images: {
     remotePatterns: [
       {
@@ -48,7 +43,6 @@ const nextConfig = {
     ],
   },
   webpack(config, { isServer }) {
-    // Add path alias
     config.resolve.alias = {
       ...config.resolve.alias,
       "@": path.join(__dirname, "src"),
