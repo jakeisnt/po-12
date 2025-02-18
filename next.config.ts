@@ -13,7 +13,7 @@ const withPWA = require("@ducanh2912/next-pwa").default({
   disable: process.env.NODE_ENV === "development",
   themeColor: "#292525",
   cacheStartUrl: true,
-  scope: "/devices/pocket-operator",
+  scope: "/",
 });
 
 /** @type {import('next').NextConfig} */
