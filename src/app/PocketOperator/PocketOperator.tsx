@@ -8,9 +8,9 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import Button, { ButtonStatus } from "./POButton";
 import LCD from "../LCD";
 import classes from "./pocketOperator.module.scss";
-import { SelectingMode } from "../utils";
-import type { Note, Pattern } from "./types";
-import { importPatternFile, exportPatternFile } from "./fileUtils";
+import { SelectingMode } from "@/lib/utils";
+import type { Note, Pattern } from "../../lib/types";
+import { importPatternFile, exportPatternFile } from "@/lib/file";
 
 import useSampler from "../hooks/useSampler";
 import {

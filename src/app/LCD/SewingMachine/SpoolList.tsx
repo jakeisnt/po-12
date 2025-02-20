@@ -1,6 +1,16 @@
 import classes from "../lcd.module.scss";
 
-const SpoolList = ({ currentBeat, queuedSelectedPattern, spoolState }) => {
+type SpoolListProps = {
+  currentBeat: number;
+  queuedSelectedPattern: number | null;
+  spoolState?: number;
+};
+
+const SpoolList = ({
+  currentBeat,
+  queuedSelectedPattern,
+  spoolState = 0,
+}: SpoolListProps) => {
   let activeSpool = 0;
 
   if (queuedSelectedPattern) {

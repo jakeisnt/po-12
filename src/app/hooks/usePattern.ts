@@ -2,7 +2,7 @@ import { useState, useMemo, useCallback } from "react";
 
 import { useLocalStorage } from "./useLocalStorage";
 
-import type { Note, Pattern } from "../PocketOperator/types";
+import type { Note, Pattern } from "../../lib/types";
 
 // Pattern with all notes off.
 // Used to disable everything at the end of every beat.

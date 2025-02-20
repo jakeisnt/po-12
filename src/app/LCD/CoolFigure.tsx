@@ -1,6 +1,6 @@
 "use client";
 
-import type { AnimationState } from "../utils";
+import type { AnimationState } from "@/lib/utils";
 import classes from "./lcd.module.scss";
 
 type CoolFigureProps = {

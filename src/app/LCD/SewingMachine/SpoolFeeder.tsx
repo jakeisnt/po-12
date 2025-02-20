@@ -1,6 +1,6 @@
-import classes from "../lcd.module.scss";
+import { isBetween } from "@/lib/math";
 
-import { isBetween } from "../../utils";
+import classes from "../lcd.module.scss";
 
 const SpoolFeeder = ({
   currentBeat,

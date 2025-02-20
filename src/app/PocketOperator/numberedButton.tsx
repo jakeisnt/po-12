@@ -1,7 +1,7 @@
 import Button, { ButtonStatus } from "./POButton";
-import { SelectingMode } from "../utils";
+import { SelectingMode } from "@/lib/utils";
 import { useCallback } from "react";
-import type { Pattern } from "./types";
+import type { Pattern } from "../../lib/types";
 
 type NumberedButtonProps = {
   playing: boolean;
