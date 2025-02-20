@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from "react";
-import { isTouchDevice } from "./utils";
+import { isTouchDevice } from "@/lib/utils";
 import { useEffect } from "react";
 
 // whenever the device aspect ration chagnes,

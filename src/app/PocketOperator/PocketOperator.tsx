@@ -3,16 +3,16 @@
 import { cn } from "@/lib/utils";
 import type { Dispatch, SetStateAction } from "react";
 import NumberedButton from "./numberedButton";
-import useDeviceAnimations from "../hooks/useDeviceAnimations";
+import useDeviceAnimations from "@/hooks/useDeviceAnimations";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import Button, { ButtonStatus } from "./POButton";
 import LCD from "../LCD";
 import classes from "./pocketOperator.module.scss";
 import { SelectingMode } from "@/lib/utils";
-import type { Note, Pattern } from "../../lib/types";
+import type { Note, Pattern } from "@/lib/types";
 import { importPatternFile, exportPatternFile } from "@/lib/file";
 
-import useSampler from "../hooks/useSampler";
+import useSampler from "@/hooks/useSampler";
 import {
   SCurve,
   Metronome,
@@ -25,7 +25,7 @@ import {
 
 import POKnob from "./POKnob";
 
-import useKeyInteractions from "../hooks/useKeyInteractions";
+import useKeyInteractions from "@/hooks/useKeyInteractions";
 
 // 4x4 grid of buttons numbered 1-16
 const buttonGrid = [
