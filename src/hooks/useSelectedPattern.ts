@@ -1,6 +1,6 @@
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { useState, useEffect } from "react";
-import type { Pattern } from "../../lib/types";
+import type { Pattern } from "@/lib/types";
 import { flushSync } from "react-dom";
 
 /**

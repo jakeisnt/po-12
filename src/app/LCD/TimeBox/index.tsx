@@ -1,6 +1,6 @@
 "use client";
 
-import useTime from "../../hooks/useTime";
+import useTime from "@/hooks/useTime";
 import { useState, useEffect } from "react";
 import classes from "./timeBox.module.scss";
 import { cn } from "@/lib/utils";

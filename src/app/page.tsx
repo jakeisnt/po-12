@@ -3,16 +3,16 @@
 import PocketOperator from "./PocketOperator";
 import classes from "./pocketOperatorPage.module.scss";
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { usePatterns } from "./hooks/usePattern";
-import useCurrentBeat from "./hooks/useCurrentBeat";
+import { usePatterns } from "@/hooks/usePattern";
+import useCurrentBeat from "@/hooks/useCurrentBeat";
 
 import { getNextBPM, MetronomeModes } from "@/lib/bpm";
 import { SelectingMode } from "@/lib/utils";
 import InstructionsPaper from "./InstructionsPaper/InstructionsPaper";
-import { useIsTouchDevice } from "./hooks/useIsTouchDevice";
+import useIsTouchDevice from "@/hooks/useIsTouchDevice";
 import ProductTour from "./ProductTour";
-import { useLocalStorage } from "./hooks/useLocalStorage";
-import useSelectedPattern from "./hooks/useSelectedPattern";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import useSelectedPattern from "@/hooks/useSelectedPattern";
 
 const defaultTilt = { x: 0, y: 0 };
 

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { MutableRefObject } from "react";
-import unmute from "./unmute";
+import unmute from "@/lib/unmute";
 import * as Tone from "tone";
 import useSoundSourceURL from "./useSoundSourceURL";
 const allowBackgroundPlayback = false;
