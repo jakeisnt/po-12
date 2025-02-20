@@ -21,10 +21,7 @@ const useLocation = () => {
 const useSoundSourceURL = () => {
   const location = useLocation();
   return useMemo(
-    () =>
-      location?.origin
-        ? `${location.origin}/pocket-operator-samples/`
-        : undefined,
+    () => (location?.origin ? `${location.origin}/samples/` : undefined),
     [location]
   );
 };
