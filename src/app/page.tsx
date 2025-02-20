@@ -2,47 +2,19 @@
 
 import PocketOperator from "./PocketOperator";
 import classes from "./pocketOperatorPage.module.scss";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { usePatterns } from "@/hooks/usePattern";
 import useCurrentBeat from "@/hooks/useCurrentBeat";
 
-import { getNextBPM, MetronomeModes } from "@/lib/bpm";
 import { SelectingMode } from "@/lib/utils";
 import InstructionsPaper from "./InstructionsPaper/InstructionsPaper";
 import useIsTouchDevice from "@/hooks/useIsTouchDevice";
 import ProductTour from "./ProductTour";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import useSelectedPattern from "@/hooks/useSelectedPattern";
+import useBPM from "@/hooks/useBPM";
 
 const defaultTilt = { x: 0, y: 0 };
-
-const onMouseMove = () => {};
-
-/**
- * Manage the BPM.
- */
-const useBPM = () => {
-  const [bpm, setBPM] = useLocalStorage("bpm", MetronomeModes.HIP_HOP);
-
-  /** Go to the next BPM, cycling through them. */
-  const goToNextBPM = useCallback(
-    () => setBPM((curBPM) => getNextBPM(curBPM)),
-    [setBPM]
-  );
-
-  const resetBPM = () => setBPM(MetronomeModes.HIP_HOP);
-
-  return { bpm, setBPM, goToNextBPM, resetBPM };
-};
-
-/**
- * A couple more things I want to dial in before we're finished --
- * - animation state when switching tracks and not playing
- *   follows bpm, but does do the same thing.
- * - animation state when playing should show a wave effect where the
- *   current sound effect rolls over to the next one.
- * @returns
- */
 
 const PocketOperatorWrapper = () => {
   const onTouchDevice = useIsTouchDevice();
@@ -112,10 +84,7 @@ const PocketOperatorWrapper = () => {
   });
 
   return (
-    <div
-      className={classes.pocketOperatorPageContainer}
-      onMouseMove={onMouseMove}
-    >
+    <div className={classes.pocketOperatorPageContainer}>
       <div className={classes.container}>
         <div className={classes.pocketOperatorInTotal}>
           <PocketOperator
