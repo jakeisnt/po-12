@@ -1,15 +1,15 @@
 "use client";
 
-import PocketOperator from "./PocketOperator";
-import classes from "./pocketOperatorPage.module.scss";
+import PocketOperator from "../components/PocketOperator";
+import classes from "./page.module.scss";
 import { useState, useEffect, useMemo } from "react";
 import { usePatterns } from "@/hooks/usePattern";
 import useCurrentBeat from "@/hooks/useCurrentBeat";
 
 import { SelectingMode } from "@/lib/utils";
-import InstructionsPaper from "./InstructionsPaper/InstructionsPaper";
+import InstructionsPaper from "@/components/InstructionsPaper/InstructionsPaper";
 import useIsTouchDevice from "@/hooks/useIsTouchDevice";
-import ProductTour from "./ProductTour";
+import ProductTour from "@/components/ProductTour";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import useSelectedPattern from "@/hooks/useSelectedPattern";
 import useBPM from "@/hooks/useBPM";
