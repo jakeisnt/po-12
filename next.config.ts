@@ -1,9 +1,5 @@
 import path from "path";
 
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
-
 /**
  * A fork of 'next-pwa' that has app directory support
  * @see https://github.com/shadowwalker/next-pwa/issues/424#issuecomment-1332258575
@@ -18,30 +14,6 @@ const withPWA = require("@ducanh2912/next-pwa").default({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "d2w9rnfcy7mm78.cloudfront.net",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "images.are.na",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "lh3.googleusercontent.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
-        pathname: "/**",
-      },
-    ],
-  },
   webpack(config, { isServer }) {
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -81,7 +53,7 @@ const KEYS_TO_OMIT = [
 ];
 
 module.exports = (_phase, { defaultConfig }) => {
-  const plugins = [[withPWA], [withBundleAnalyzer, {}]];
+  const plugins = [[withPWA]];
 
   const wConfig = plugins.reduce(
     (acc, [plugin, config]) => plugin({ ...acc, ...config }),

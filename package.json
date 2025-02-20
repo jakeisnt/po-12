@@ -18,7 +18,6 @@
   },
   "devDependencies": {
     "@ducanh2912/next-pwa": "^10.2.9",
-    "@next/bundle-analyzer": "^15.1.7",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "^20.17.19",
     "@types/react": "^18.3.18",
