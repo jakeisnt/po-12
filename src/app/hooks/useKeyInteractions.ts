@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import type { Dispatch, SetStateAction } from "react";
-import { SelectingMode } from "../utils";
+import { SelectingMode } from "@/lib/utils";
 
 /**
  * Map of keys to button numbers.

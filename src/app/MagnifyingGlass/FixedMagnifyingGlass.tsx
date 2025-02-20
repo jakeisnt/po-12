@@ -1,22 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import classes from "./magnifyingGlass.module.scss";
-
-const withinBbox = (
-  event: MouseEvent,
-  bbox: {
-    left: number;
-    right: number;
-    top: number;
-    bottom: number;
-  }
-) => {
-  return (
-    event.clientX >= bbox.left &&
-    event.clientX <= bbox.right &&
-    event.clientY >= bbox.top &&
-    event.clientY <= bbox.bottom
-  );
-};
+import { withinBbox } from "@/lib/dom";
 
 /**
  * Get the border radius configuration.

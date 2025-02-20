@@ -1,4 +1,4 @@
-import { isBetween } from "../../utils";
+import { isBetween } from "@/lib/math";
 
 import classes from "../lcd.module.scss";
 

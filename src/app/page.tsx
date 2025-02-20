@@ -6,7 +6,8 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { usePatterns } from "./hooks/usePattern";
 import useCurrentBeat from "./hooks/useCurrentBeat";
 
-import { MetronomeModes, getNextBPM, SelectingMode } from "./utils";
+import { getNextBPM, MetronomeModes } from "@/lib/bpm";
+import { SelectingMode } from "@/lib/utils";
 import InstructionsPaper from "./InstructionsPaper/InstructionsPaper";
 import { useIsTouchDevice } from "./hooks/useIsTouchDevice";
 import ProductTour from "./ProductTour";

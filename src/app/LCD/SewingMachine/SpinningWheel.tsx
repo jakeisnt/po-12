@@ -1,4 +1,6 @@
-import { isBetween, oneOver16, oneOver8 } from "../../utils";
+import { isBetween } from "@/lib/math";
+import { oneOver16, oneOver8 } from "@/lib/utils";
+
 import classes from "../lcd.module.scss";
 
 const SpinningWheel = ({ currentBeat }: { currentBeat: number }) => {

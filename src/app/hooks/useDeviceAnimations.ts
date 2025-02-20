@@ -1,12 +1,8 @@
 import { useState, useCallback, useLayoutEffect } from "react";
 import type { SetStateAction } from "react";
-import type { AnimationState } from "../utils";
+import type { AnimationState } from "@/lib/utils";
 import { flushSync } from "react-dom";
-
-// does the first array include any of the items in the second?
-const includes = <T>(arr1: T[], arr2: T[]) => {
-  return arr2.some((item) => arr1.includes(item));
-};
+import { includes } from "@/lib/array";
 
 // hitting drum -> 2, 5, 11, 12
 const hittingDrumSounds = [2, 5, 11, 12];

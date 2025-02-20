@@ -1,11 +1,17 @@
 import classes from "../lcd.module.scss";
-import { isBetween } from "../../utils";
+import { isBetween } from "@/lib/math";
+
+type SpoolStampProps = {
+  currentBeat: number;
+  lightningLeftEnabled: boolean;
+  lightningRightEnabled: boolean;
+};
 
 const SpoolStamp = ({
   currentBeat,
   lightningLeftEnabled,
   lightningRightEnabled,
-}) => {
+}: SpoolStampProps) => {
   return (
     <>
       {/* stamp up */}
