@@ -12,23 +12,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^19",
-    "react-dom": "^19",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "tone": "^15.0.4"
   },
   "devDependencies": {
     "@ducanh2912/next-pwa": "^10.2.9",
     "@svgr/webpack": "^8.1.0",
-    "@types/node": "^20.17.19",
-    "@types/react": "^18.3.18",
+    "@types/node": "^20.17.26",
+    "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.5",
-    "@typescript-eslint/eslint-plugin": "^8.24.1",
-    "@typescript-eslint/parser": "^8.24.1",
-    "eslint": "^9.20.1",
-    "eslint-config-next": "^15.1.7",
-    "next": "^15.1.7",
-    "sass": "^1.85.0",
-    "typescript": "^5.7.3"
+    "@typescript-eslint/eslint-plugin": "^8.27.0",
+    "@typescript-eslint/parser": "^8.27.0",
+    "eslint": "^9.23.0",
+    "eslint-config-next": "^15.2.3",
+    "next": "^15.2.3",
+    "sass": "^1.86.0",
+    "typescript": "^5.8.2"
   },
   "trustedDependencies": [
     "@parcel/watcher"
