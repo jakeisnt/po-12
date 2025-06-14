@@ -1,32 +1,14 @@
 "use client";
 
-import type { AnimationState } from "@/lib/utils";
 import classes from "./lcd.module.scss";
 
 type CoolFigureProps = {
   queuedSelectedPattern?: number | null;
-  animationState: AnimationState;
 };
 
 const CoolFigure = ({
   queuedSelectedPattern: isSwitchingPatterns,
-  animationState,
 }: CoolFigureProps) => {
-  const {
-    hittingKick,
-    hittingHighHat,
-    hittingDrum,
-    // if the guy has finished hitting the drum (high hat or drum), he goes to this resting state
-    finishedHittingDrum,
-    hittingClap,
-    finishedHittingClap,
-    hittingBell1,
-    hittingBell2,
-  } = animationState;
-
-  // the sounds playing change once per beat.
-  // update the animation state based on the sounds playing.
-
   return (
     <svg
       width="95"
@@ -35,15 +17,9 @@ const CoolFigure = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* top left mallet */}
-      <g className={hittingHighHat ? classes.visible : classes.hidden}>
-        <g
-          className={
-            !isSwitchingPatterns && (finishedHittingClap || hittingHighHat)
-              ? classes.visible
-              : classes.hidden
-          }
-        >
+      {/* top left mallet (highHat) */}
+      <g data-anim="highHat">
+        <g>
           <rect
             x="21.8363"
             y="44.0744"
@@ -74,91 +50,166 @@ const CoolFigure = ({
         <circle cx="8.5" cy="32.5" r="2.5" fill="currentColor" />
       </g>
 
-      {/* center left mallet */}
-      <g
-        className={
-          !isSwitchingPatterns && finishedHittingDrum
-            ? classes.visible
-            : classes.hidden
-        }
-      >
-        <g
-          className={
-            !isSwitchingPatterns && (hittingClap || finishedHittingDrum)
-              ? classes.visible
-              : classes.hidden
-          }
-        >
+      {/* center left mallet (bell1) */}
+      <g data-anim="bell1">
+        <g>
+          <g>
+            <rect
+              x="21.5"
+              y="46.5"
+              width="2.5"
+              height="10"
+              rx="1.25"
+              transform="rotate(90 21.5 46.5)"
+              fill="currentColor"
+            />
+            <rect
+              x="21"
+              y="47"
+              width="1.5"
+              height="9"
+              rx="0.75"
+              transform="rotate(90 21 47)"
+              stroke="currentColor"
+            />
+          </g>
           <rect
-            x="21.5"
-            y="46.5"
-            width="2.5"
-            height="10"
-            rx="1.25"
-            transform="rotate(90 21.5 46.5)"
+            x="8.15543"
+            y="42.4173"
+            width="5"
+            height="1.5"
+            transform="rotate(44.1785 8.15543 42.4173)"
             fill="currentColor"
           />
-          <rect
-            x="21"
-            y="47"
-            width="1.5"
-            height="9"
-            rx="0.75"
-            transform="rotate(90 21 47)"
-            stroke="currentColor"
-          />
+          <circle cx="6.5" cy="41.5" r="2.5" fill="currentColor" />
         </g>
-        <rect
-          x="8.15543"
-          y="42.4173"
-          width="5"
-          height="1.5"
-          transform="rotate(44.1785 8.15543 42.4173)"
-          fill="currentColor"
-        />
-        <circle cx="6.5" cy="41.5" r="2.5" fill="currentColor" />
       </g>
 
-      {/* bottom left mallet */}
-      <g
-        className={
-          !isSwitchingPatterns && hittingDrum ? classes.visible : classes.hidden
-        }
-      >
-        <g
-          className={
-            !isSwitchingPatterns && (finishedHittingClap || hittingDrum)
-              ? classes.visible
-              : classes.hidden
-          }
-        >
+      {/* bottom left mallet (drum) */}
+      <g data-anim="drum">
+        <g>
+          <g>
+            <rect
+              x="14.7678"
+              y="57.8552"
+              width="2.5"
+              height="10"
+              rx="1.25"
+              transform="rotate(-135 14.7678 57.8552)"
+              fill="currentColor"
+            />
+            <rect
+              x="14.7678"
+              y="57.1481"
+              width="1.5"
+              height="9"
+              rx="0.75"
+              transform="rotate(-135 14.7678 57.1481)"
+              stroke="currentColor"
+            />
+          </g>
+          <rect x="7" y="56" width="5.5" height="1.5" fill="currentColor" />
+          <circle
+            cx="5.53553"
+            cy="56.4739"
+            r="2.5"
+            transform="rotate(-45 5.53553 56.4739)"
+            fill="currentColor"
+          />
+        </g>
+      </g>
+
+      {/* left hand (clap) */}
+      <g data-anim="clap">
+        <g>
           <rect
-            x="14.7678"
-            y="57.8552"
+            x="4"
+            y="16.7678"
             width="2.5"
-            height="10"
+            height="4"
             rx="1.25"
-            transform="rotate(-135 14.7678 57.8552)"
+            transform="rotate(-45 4 16.7678)"
             fill="currentColor"
           />
           <rect
-            x="14.7678"
-            y="57.1481"
+            x="4.70711"
+            y="16.7678"
             width="1.5"
-            height="9"
+            height="3"
             rx="0.75"
-            transform="rotate(-135 14.7678 57.1481)"
+            transform="rotate(-45 4.70711 16.7678)"
             stroke="currentColor"
           />
         </g>
-        <rect x="7" y="56" width="5.5" height="1.5" fill="currentColor" />
-        <circle
-          cx="5.53553"
-          cy="56.4739"
-          r="2.5"
-          transform="rotate(-45 5.53553 56.4739)"
+        <g>
+          <rect
+            x="5"
+            y="17.7678"
+            width="2.5"
+            height="4.98391"
+            rx="1.25"
+            transform="rotate(-45 5 17.7678)"
+            fill="currentColor"
+          />
+          <rect
+            x="5.70711"
+            y="17.7678"
+            width="1.5"
+            height="3.98391"
+            rx="0.75"
+            transform="rotate(-45 5.70711 17.7678)"
+            stroke="currentColor"
+          />
+        </g>
+        <circle cx="7.75" cy="20.5" r="2.5" fill="currentColor" />
+      </g>
+
+      {/* right hand (bell2) */}
+      <g data-anim="bell2">
+        <g>
+          <rect
+            x="29"
+            y="48.5"
+            width="2.5"
+            height="11"
+            rx="1.25"
+            transform="rotate(-90 29 48.5)"
+            fill="currentColor"
+          />
+          <rect
+            x="29.5"
+            y="48"
+            width="1.5"
+            height="10"
+            rx="0.75"
+            transform="rotate(-90 29.5 48)"
+            stroke="currentColor"
+          />
+        </g>
+        <circle cx="45.5" cy="47" r="2.5" fill="currentColor" />
+      </g>
+
+      {/* right leg (kick) */}
+      <g data-anim="kick">
+        <rect
+          x="25.5"
+          y="61.8434"
+          width="3.25"
+          height="8"
+          rx="1.625"
+          transform="rotate(-16.3275 25.5 61.8434)"
           fill="currentColor"
         />
+        <rect
+          x="26.1204"
+          y="62.1827"
+          width="2.25"
+          height="7"
+          rx="1.125"
+          transform="rotate(-16.3275 26.1204 62.1827)"
+          stroke="currentColor"
+        />
+        <path d="M27 56.5L29.5 64L26 63L27 56.5Z" fill="currentColor" />
       </g>
 
       {/* top left head of the guy */}
@@ -467,210 +518,6 @@ const CoolFigure = ({
           d="M22.5 58.5L23.5688 54.25L26.799 54.25L25.5 58L22.5 58.5Z"
           fill="currentColor"
         />
-      </g>
-
-      {/* right leg */}
-      <g
-        className={
-          isSwitchingPatterns || hittingKick ? classes.hidden : classes.visible
-        }
-      >
-        <rect
-          x="25.5"
-          y="61.8434"
-          width="3.25"
-          height="8"
-          rx="1.625"
-          transform="rotate(-16.3275 25.5 61.8434)"
-          fill="currentColor"
-        />
-        <rect
-          x="26.1204"
-          y="62.1827"
-          width="2.25"
-          height="7"
-          rx="1.125"
-          transform="rotate(-16.3275 26.1204 62.1827)"
-          stroke="currentColor"
-        />
-        <path d="M27 56.5L29.5 64L26 63L27 56.5Z" fill="currentColor" />
-      </g>
-
-      {/* top right arm and hand \m/ */}
-      <g className={classes.hidden}>
-        <g
-          className={
-            !isSwitchingPatterns && hittingBell1
-              ? classes.visible
-              : classes.hidden
-          }
-        >
-          <rect
-            x="35.0711"
-            y="37"
-            width="2.5"
-            height="10"
-            rx="1.25"
-            transform="rotate(45 35.0711 37)"
-            fill="currentColor"
-          />
-          <rect
-            x="35.0711"
-            y="37.7071"
-            width="1.5"
-            height="9"
-            rx="0.75"
-            transform="rotate(45 35.0711 37.7071)"
-            stroke="currentColor"
-          />
-        </g>
-        <circle cx="36" cy="34" r="2.5" fill="currentColor" />
-        <rect
-          x="34.0899"
-          y="29.4539"
-          width="5.9887"
-          height="2.51065"
-          rx="1.25532"
-          transform="rotate(67.378 34.0899 29.4539)"
-          fill="currentColor"
-        />
-        <rect
-          x="40.0752"
-          y="30.1067"
-          width="6.96216"
-          height="2.51065"
-          rx="1.25532"
-          transform="rotate(113.464 40.0752 30.1067)"
-          fill="currentColor"
-        />
-      </g>
-
-      {/* middle right arm */}
-      <g className={classes.hidden}>
-        <g
-          className={
-            !isSwitchingPatterns && hittingBell2
-              ? classes.visible
-              : classes.hidden
-          }
-        >
-          <rect
-            x="29"
-            y="48.5"
-            width="2.5"
-            height="11"
-            rx="1.25"
-            transform="rotate(-90 29 48.5)"
-            fill="currentColor"
-          />
-          <rect
-            x="29.5"
-            y="48"
-            width="1.5"
-            height="10"
-            rx="0.75"
-            transform="rotate(-90 29.5 48)"
-            stroke="currentColor"
-          />
-        </g>
-        <circle cx="45.5" cy="47" r="2.5" fill="currentColor" />
-      </g>
-
-      {/* the leg that hits the foot pedal */}
-      <g
-        className={
-          !isSwitchingPatterns && hittingKick ? classes.visible : classes.hidden
-        }
-      >
-        <path
-          d="M28.5398 55.7872C28.2484 55.1613 28.5196 54.4178 29.1455 54.1265L38.3965 49.8203L39.4515 52.0868L30.2005 56.3929C29.5746 56.6843 28.8311 56.4131 28.5398 55.7872Z"
-          fill="currentColor"
-        />
-        <path
-          d="M47.9825 55.832C48.296 56.5204 47.9921 57.3326 47.3037 57.6461L42.202 59.9697L41.0666 57.4768L46.1683 55.1532C46.8567 54.8397 47.6689 55.1436 47.9825 55.832Z"
-          fill="currentColor"
-        />
-        <rect
-          x="44.5968"
-          y="58.0028"
-          width="2.5"
-          height="10.2654"
-          transform="rotate(143.157 44.5968 58.0028)"
-          fill="currentColor"
-        />
-      </g>
-
-      {/* the foot pedal */}
-      <g>
-        <circle cx="37.25" cy="65.5" r="3.5" fill="currentColor" />
-        <rect
-          x="42"
-          y="66"
-          width="18"
-          height="3"
-          fill="currentColor"
-          className={
-            !isSwitchingPatterns && hittingKick
-              ? classes.visible
-              : classes.hidden
-          }
-        />
-        <rect
-          x="41"
-          y="62.1687"
-          width="18"
-          height="3"
-          transform="rotate(-20.0417 41 62.1687)"
-          fill="currentColor"
-          className={
-            !isSwitchingPatterns && hittingKick
-              ? classes.hidden
-              : classes.visible
-          }
-        />
-      </g>
-
-      {/* stick for the bells */}
-      <g className={classes.visible}>
-        <rect x="41" y="20" width="1.5" height="15" fill="currentColor" />
-        <rect
-          x="41"
-          y="36"
-          width="1.5"
-          height="8"
-          fill="currentColor"
-          className={hittingBell1 ? classes.hidden : classes.visible}
-        />
-      </g>
-
-      {/* the bell at left */}
-      <g className={hittingBell1 ? classes.visible : classes.hidden}>
-        <path
-          d="M40 16.5C40 18.9853 37.9654 21 35.4556 21C32.9458 21 30.9112 18.9853 30.9112 16.5C30.9112 14.0147 32.9458 12 35.4556 12C37.9654 12 40 14.0147 40 16.5Z"
-          fill="currentColor"
-        />
-        <rect
-          width="9.03767"
-          height="6.27855"
-          transform="matrix(0.71233 0.701845 -0.708803 0.705407 32.4502 13.1166)"
-          fill="currentColor"
-        />
-        <circle cx="27.25" cy="21.25" r="2.25" fill="currentColor" />
-      </g>
-
-      {/* the bell at right */}
-      <g className={!hittingBell1 ? classes.visible : classes.hidden}>
-        <path
-          d="M45.9694 11.8584C48.4529 11.9538 50.386 14.1175 50.2871 16.6912C50.1882 19.2649 48.0948 21.274 45.6114 21.1786C43.1279 21.0831 41.1948 18.9194 41.2937 16.3457C41.3926 13.772 43.486 11.763 45.9694 11.8584Z"
-          fill="currentColor"
-        />
-        <rect
-          width="9.15867"
-          height="6.36178"
-          transform="matrix(0.719755 -0.694228 0.668105 0.744067 42.2911 19.4705)"
-          fill="currentColor"
-        />
-        <circle cx="54" cy="21.5" r="2.5" fill="currentColor" />
       </g>
 
       {/* the drum at the bottom */}

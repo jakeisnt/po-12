@@ -143,3 +143,113 @@
   padding-left: 4px;
   padding-top: 4px;
 }
+
+// Animation classes for device arms/parts
+.anim-kick {
+  animation: kickAnim 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.anim-highHat {
+  animation: highHatAnim 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.anim-drum {
+  animation: drumAnim 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.anim-clap {
+  animation: clapAnim 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.anim-bell1 {
+  animation: bell1Anim 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.anim-bell2 {
+  animation: bell2Anim 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes kickAnim {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px) scale(1.1);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes highHatAnim {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-20deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes drumAnim {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes clapAnim {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bell1Anim {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(15deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes bell2Anim {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-15deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}

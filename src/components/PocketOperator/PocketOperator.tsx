@@ -123,7 +123,7 @@ const PocketOperator = ({
     [currentBeatIndex, playing]
   );
 
-  const { animationState, triggerAnimation } = useDeviceAnimations({
+  const { triggerAnimation } = useDeviceAnimations({
     soundsPlaying,
     bpm,
   });
@@ -252,7 +252,6 @@ const PocketOperator = ({
         recording={recording}
         setRecording={setRecording}
         queuedSelectedPattern={queuedSelectedPattern}
-        animationState={animationState}
         tumblerALevel={tumblerALevel}
         tumblerBLevel={tumblerBLevel}
       />

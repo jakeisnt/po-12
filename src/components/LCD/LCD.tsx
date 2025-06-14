@@ -9,7 +9,6 @@ import CoolFigure from "./CoolFigure";
 
 import { SuccessIcon, FailIcon, PlayingIcon, RecordingIcon } from "./icons";
 import MetronomeAndMode from "./MetronomeAndMode";
-import type { AnimationState } from "@/lib/utils";
 import BottomBeatIndicator from "./BottomBeatIndicator";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +26,6 @@ type LCDProps = {
   queuedSelectedPattern: number | null;
   tumblerALevel: number;
   tumblerBLevel: number;
-  animationState: AnimationState;
   uploadingState: "fail" | "success" | undefined;
   spoolState?: number;
 };
@@ -49,7 +47,6 @@ const LCD = ({
   queuedSelectedPattern,
   tumblerALevel,
   tumblerBLevel,
-  animationState,
   uploadingState,
   spoolState,
 }: LCDProps) => {
@@ -97,10 +94,7 @@ const LCD = ({
         />
       </div>
       <div className={classes.coolFigureBlock}>
-        <CoolFigure
-          queuedSelectedPattern={queuedSelectedPattern}
-          animationState={animationState}
-        />
+        <CoolFigure queuedSelectedPattern={queuedSelectedPattern} />
       </div>
       <PatternIndicators
         currentBeat={currentBeatInteger}

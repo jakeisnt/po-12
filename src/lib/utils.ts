@@ -40,7 +40,6 @@ export const isTouchDevice = () =>
   (typeof window !== "undefined" && "ontouchstart" in window) ||
   (typeof navigator !== "undefined" && navigator.maxTouchPoints > 0);
 
-
 enum SelectingMode {
   SOUND = "sound",
   PATTERN = "pattern",
@@ -49,18 +48,5 @@ enum SelectingMode {
 
 const oneOver8 = 0.125;
 const oneOver16 = 0.0625;
-
-type AnimationState = {
-  hittingKick: boolean;
-  hittingHighHat: boolean;
-  hittingDrum: boolean;
-  finishedHittingDrum: boolean;
-  hittingClap: boolean;
-  finishedHittingClap: boolean;
-  hittingBell1: boolean;
-  hittingBell2: boolean;
-};
-
-export type { AnimationState };
 
 export { SelectingMode, oneOver16, oneOver8 };
