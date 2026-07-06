@@ -26,27 +26,28 @@
     "deploy": "bun run build && bunx wrangler pages deploy"
   },
   "dependencies": {
-    "baseline-browser-mapping": "^2.10.18",
-    "caniuse-lite": "^1.0.30001787",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "baseline-browser-mapping": "^2.10.42",
+    "caniuse-lite": "^1.0.30001802",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "tone": "^15.1.22"
   },
   "devDependencies": {
-    "@types/node": "25.*",
-    "@types/react": "19.2.14",
+    "@types/node": "^26.1.0",
+    "@types/react": "19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
-    "sass": "^1.99.0",
-    "typescript": "^5.9.3",
-    "vite": "^8.0.8",
-    "vite-plugin-pwa": "^1.2.0",
-    "wrangler": "^4.81.1"
+    "@vitejs/plugin-react": "^6.0.3",
+    "sass": "^1.101.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.3",
+    "vite-plugin-pwa": "^1.3.0",
+    "wrangler": "^4.107.0"
   },
   "trustedDependencies": [
     "@parcel/watcher",
     "esbuild",
-    "sharp"
+    "sharp",
+    "workerd"
   ],
   "browserslist": [
     ">0.2%",
